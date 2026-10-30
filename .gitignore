@@ -38,3 +38,6 @@ dist/
 .idea/
 .DS_Store
 Thumbs.db
+
+# tsv files
+*.tsv
