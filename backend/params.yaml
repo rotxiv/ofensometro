@@ -1,0 +1,73 @@
+# Única fuente de verdad del experimento.
+# Cambia un valor aquí, reentrena y la API sirve el modelo nuevo.
+
+seed: 42
+
+data:
+  raw_path: data/raw/comentarios.csv        # OffendES preparado con: python -m src.data.ingest
+  demo_path: data/raw/demo_sintetico.csv    # solo para probar el sistema sin los datos reales
+  external_dir: data/external/offendes      # carpeta donde se descargan los archivos originales
+  split: stratified        # stratified: 80/20 estratificado con semilla | official: usa train+val / test oficiales
+  test_size: 0.20          # solo para split=stratified; el conjunto de prueba nunca ajusta nada
+  max_chars: 1000          # la API rechaza textos más largos
+  demo_rows: 3000          # tamaño del conjunto sintético de demostración
+
+  # Columnas de los archivos originales de OffendES -> columnas del proyecto.
+  source:
+    separator: null        # null = detectar solo (coma, tabulador, punto y coma)
+    columns:
+      id: comment_id
+      texto: comment
+      etiqueta: label
+      plataforma: media
+      influencer: influencer
+
+# Las cuatro clases de OffendES. 'ofensivo' define la vista binaria.
+# Las claves van entre comillas: sin ellas YAML lee NO como el booleano false.
+labels:
+  "NO":  {nombre: "No ofensivo",                 ofensivo: false,
+        descripcion: "Texto sin ofensas ni palabras fuertes."}
+  "NOE": {nombre: "No ofensivo con groserías",   ofensivo: false,
+        descripcion: "Usa palabras fuertes, pero sin intención de ofender (suele ser positivo)."}
+  "OFP": {nombre: "Ofensivo a una persona",      ofensivo: true,
+        descripcion: "Ofensa dirigida a un individuo concreto."}
+  "OFG": {nombre: "Ofensivo a un grupo",         ofensivo: true,
+        descripcion: "Ofensa dirigida a un colectivo (étnico, género, ideología, religión...)."}
+
+# Vista binaria: P(ofensivo) = P(OFP) + P(OFG). Es ofensivo si supera el umbral.
+decision:
+  umbral_ofensivo: 0.5
+
+nlp:
+  # Palabras que se QUITAN de la lista de stop words de spaCy porque aportan señal.
+  # Negación: "no eres tonto" no es lo mismo que "eres tonto".
+  # Segunda persona y plurales: distinguen insultar a UNA persona (OFP) de un GRUPO (OFG).
+  # "no" va entre comillas: sin ellas YAML lo lee como el booleano false.
+  keep_words: ["no", ni, nunca, jamás, nada, tampoco, sin, nadie,
+               tú, tu, tus, te, ti, usted, ustedes, eres, eras, son,
+               ellos, ellas, todos, todas, esos, esas, estos, estas,
+               muy, más, menos, mucho, poco, tan, pero, bien, mal, peor, mejor]
+  # Palabras de dominio que se AGREGAN a la lista. Se completa tras el análisis exploratorio.
+  extra_stopwords: []
+
+tfidf:
+  max_features: 20000      # tamaño del vocabulario
+  min_df: 2                # ignora términos que aparecen en menos de 2 comentarios
+  max_df: 0.90             # ignora términos que aparecen en más del 90 % de los comentarios
+  sublinear_tf: true       # 1 + log(tf): una palabra repetida no domina
+
+# Espacio de búsqueda. Cada combinación se evalúa con validación cruzada estratificada
+# sobre el conjunto de entrenamiento; la mejor pasa a producción.
+experiments:
+  cv_folds: 5
+  scoring: f1_macro        # las cuatro clases pesan igual aunque OFG sea ~1 %
+  normalizers: [stem, lemma]
+  stopword_lists: [spacy_full, adjusted]
+  ngram_ranges: [[1, 1], [1, 2]]
+  models:
+    complement_nb:
+      alpha: [0.1, 0.5, 1.0]
+      norm: [false, true]
+    logistic_regression:
+      C: [0.5, 1.0, 2.0, 5.0]
+      class_weight: [null, balanced]
