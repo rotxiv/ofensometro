@@ -1,0 +1,25 @@
+# Requerimientos para datos y machine learning
+numpy==2.5.4
+pandas==3.1.0
+scikit-learn==1.9.1
+joblib==1.6.0
+
+# Requerimientos para NLP
+spacy==3.8.16
+es_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-3.8.0/es_core_news_sm-3.8.0-py3-none-any.whl
+nltk==3.10.4
+emoji==2.16.0
+
+# Requerimientos para Configuración
+pyyaml==6.0.3
+
+# Requerimientos para el Backend y base de datos
+fastapi==0.161.0
+uvicorn==0.54.0
+python-multipart==0.0.32
+sqlalchemy==2.1.6
+psycopg[binary]==3.3.6
+
+# Requerimientos para Pruebas
+pytest==9.1.1
+httpx2==2.16.0
