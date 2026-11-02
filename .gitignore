@@ -39,5 +39,9 @@ dist/
 .DS_Store
 Thumbs.db
 
+# folders
+backend/data/raw/*
+!backend/data/raw/.gitkeep
+
 # tsv files
 *.tsv
