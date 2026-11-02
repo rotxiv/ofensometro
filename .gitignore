@@ -45,3 +45,12 @@ backend/data/raw/*
 
 # tsv files
 *.tsv
+
+# Frontend
+node_modules/
+dist/
+.vite/
+*.log
+
+# Configuración local
+.env
