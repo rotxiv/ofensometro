@@ -1,0 +1,11 @@
+.git
+.gitignore
+**/__pycache__
+**/.pytest_cache
+.venv
+artifacts
+docs
+data/external
+data/raw/*.csv
+*.md
+!data/README.md

@@ -1,0 +1,94 @@
+# docker compose up --build
+#
+#   db       PostgreSQL: comentarios crudos, entrenamientos y predicciones
+#   trainer  prepara los datos y entrena; corre una vez y termina
+#   api      FastAPI; espera a que el trainer termine bien
+#
+# Los frontends (web y Flutter) se conectan a http://localhost:8000/api.
+#
+# Perfiles opcionales:
+#   docker compose --profile tools up adminer     explorador de la base en :8081
+#   docker compose --profile dev run --rm tests   pruebas automáticas
+
+name: ofensometro
+
+x-app-env: &app-env
+  DATABASE_URL: postgresql+psycopg://ofensometro:ofensometro@db:5432/ofensometro
+  CORS_ORIGINS: ${CORS_ORIGINS:-*}
+
+# Código y datos montados: se edita params.yaml o src/ y se reentrena sin reconstruir la imagen.
+# Solo hay que reconstruir cuando cambia requirements.txt.
+x-app-mounts: &app-mounts
+  - ./artifacts:/app/artifacts
+  - ./data:/app/data
+  - ./params.yaml:/app/params.yaml:ro
+  - ./src:/app/src:ro
+  - ./api:/app/api:ro
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ofensometro
+      POSTGRES_PASSWORD: ofensometro
+      POSTGRES_DB: ofensometro
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "${DB_PORT:-5433}:5432"          # 5433 afuera, para no chocar con un PostgreSQL local
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ofensometro -d ofensometro"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  trainer:
+    image: ofensometro-ml
+    build: {context: ., target: runtime}
+    environment: *app-env
+    volumes: *app-mounts
+    # Sin datos reales entrena con los sintéticos, y la API avisa con modo_demo=true.
+    command: python -m src.pipeline --skip-if-trained --synthetic-if-missing
+    depends_on:
+      db: {condition: service_healthy}
+
+  api:
+    image: ofensometro-ml
+    environment: *app-env
+    volumes: *app-mounts
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000
+    restart: unless-stopped
+    ports:
+      - "${API_PORT:-8000}:8000"
+    depends_on:
+      db: {condition: service_healthy}
+      trainer: {condition: service_completed_successfully}
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request as r; r.urlopen('http://localhost:8000/api/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  adminer:
+    image: adminer:5
+    profiles: [tools]
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+    ports:
+      - "8081:8080"
+    depends_on: [db]
+
+  tests:
+    image: ofensometro-dev
+    build: {context: ., target: dev}
+    profiles: [dev]
+    volumes:
+      - ./params.yaml:/app/params.yaml:ro
+      - ./src:/app/src:ro
+      - ./api:/app/api:ro
+      - ./tests:/app/tests:ro
+
+volumes:
+  pgdata:

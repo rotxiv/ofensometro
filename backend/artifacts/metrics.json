@@ -1,6 +1,6 @@
 {
-  "version": "20261101-222352",
-  "trained_at": "2026-11-01T22:23:52+00:00",
+  "version": "20261102-150603",
+  "trained_at": "2026-11-02T15:06:03+00:00",
   "seed": 42,
   "labels": {
     "NO": {
@@ -740,11 +740,11 @@
             332
           ],
           [
-            "video",
+            "gorda",
             239
           ],
           [
-            "gorda",
+            "video",
             239
           ],
           [
@@ -752,7 +752,7 @@
             225
           ],
           [
-            "windy",
+            "mas",
             222
           ]
         ],
@@ -778,11 +778,11 @@
             62
           ],
           [
-            "te",
+            "personas",
             59
           ],
           [
-            "personas",
+            "te",
             59
           ],
           [
@@ -859,7 +859,7 @@
         "class_weight": "balanced"
       }
     },
-    "cv_f1_macro": 0.6299
+    "cv_f1_macro": 0.6212
   },
   "models": [
     {
@@ -867,7 +867,7 @@
       "label": "Naive Bayes complementario",
       "config": {
         "model": "complement_nb",
-        "normalizer": "lemma",
+        "normalizer": "stem",
         "stopword_list": "adjusted",
         "ngram_range": [
           1,
@@ -878,82 +878,82 @@
           "norm": false
         }
       },
-      "cv_f1_macro": 0.5531,
-      "cv_f1_macro_std": 0.0056,
+      "cv_f1_macro": 0.5625,
+      "cv_f1_macro_std": 0.0071,
       "test": {
-        "accuracy": 0.84,
-        "f1_macro": 0.5743,
+        "accuracy": 0.8344,
+        "f1_macro": 0.5741,
         "per_class": {
           "NO": {
-            "precision": 0.9183,
-            "recall": 0.9099,
-            "f1": 0.9141,
+            "precision": 0.9165,
+            "recall": 0.9029,
+            "f1": 0.9097,
             "support": 4585
           },
           "NOE": {
-            "precision": 0.6177,
-            "recall": 0.6597,
-            "f1": 0.638,
+            "precision": 0.628,
+            "recall": 0.6352,
+            "f1": 0.6316,
             "support": 529
           },
           "OFP": {
-            "precision": 0.6112,
-            "recall": 0.6583,
-            "f1": 0.6339,
+            "precision": 0.5871,
+            "recall": 0.6697,
+            "f1": 0.6257,
             "support": 881
           },
           "OFG": {
-            "precision": 0.2609,
-            "recall": 0.0706,
-            "f1": 0.1111,
+            "precision": 0.3043,
+            "recall": 0.0824,
+            "f1": 0.1296,
             "support": 85
           }
         },
         "confusion_matrix": [
           [
-            4172,
-            127,
-            274,
-            12
+            4140,
+            115,
+            316,
+            14
           ],
           [
-            120,
-            349,
-            60,
+            128,
+            336,
+            65,
             0
           ],
           [
             215,
-            81,
-            580,
-            5
+            74,
+            590,
+            2
           ],
           [
-            36,
-            8,
-            35,
-            6
+            34,
+            10,
+            34,
+            7
           ]
         ]
       },
       "test_binary": {
         "threshold": 0.5,
-        "accuracy": 0.8832,
-        "f1_macro": 0.7933,
+        "accuracy": 0.8763,
+        "f1_macro": 0.7847,
         "offensive": {
-          "precision": 0.6159,
-          "recall": 0.7039,
-          "f1": 0.657
+          "precision": 0.5932,
+          "recall": 0.705,
+          "f1": 0.6443
         },
-        "roc_auc": 0.8976,
+        "roc_auc": 0.898,
         "confusion_matrix": [
           [
-            4690,
-            424
+            4647,
+            467
           ],
           [
-            286,
-            680
+            285,
+            681
           ]
         ]
       }
@@ -974,82 +974,82 @@
           "class_weight": "balanced"
         }
       },
-      "cv_f1_macro": 0.6299,
-      "cv_f1_macro_std": 0.0027,
+      "cv_f1_macro": 0.6212,
+      "cv_f1_macro_std": 0.0087,
       "test": {
-        "accuracy": 0.8421,
-        "f1_macro": 0.6256,
+        "accuracy": 0.8413,
+        "f1_macro": 0.6355,
         "per_class": {
           "NO": {
-            "precision": 0.9452,
-            "recall": 0.8957,
-            "f1": 0.9198,
+            "precision": 0.9476,
+            "recall": 0.8872,
+            "f1": 0.9164,
             "support": 4585
           },
           "NOE": {
-            "precision": 0.6418,
-            "recall": 0.7486,
-            "f1": 0.6911,
+            "precision": 0.6689,
+            "recall": 0.7524,
+            "f1": 0.7082,
             "support": 529
           },
           "OFP": {
-            "precision": 0.6289,
-            "recall": 0.6617,
-            "f1": 0.6449,
+            "precision": 0.6178,
+            "recall": 0.6935,
+            "f1": 0.6535,
             "support": 881
           },
           "OFG": {
-            "precision": 0.178,
-            "recall": 0.4,
-            "f1": 0.2464,
+            "precision": 0.1872,
+            "recall": 0.4471,
+            "f1": 0.2639,
             "support": 85
           }
         },
         "confusion_matrix": [
           [
-            4107,
+            4068,
             113,
-            262,
-            103
+            300,
+            104
           ],
           [
-            50,
-            396,
             59,
-            24
+            398,
+            55,
+            17
           ],
           [
-            167,
-            101,
-            583,
-            30
+            152,
+            74,
+            611,
+            44
           ],
           [
-            21,
-            7,
+            14,
+            10,
             23,
-            34
+            38
           ]
         ]
       },
       "test_binary": {
         "threshold": 0.5,
-        "accuracy": 0.8783,
-        "f1_macro": 0.7844,
+        "accuracy": 0.8806,
+        "f1_macro": 0.7947,
         "offensive": {
-          "precision": 0.6025,
-          "recall": 0.6874,
-          "f1": 0.6422
+          "precision": 0.6015,
+          "recall": 0.736,
+          "f1": 0.662
         },
-        "roc_auc": 0.9008,
+        "roc_auc": 0.9051,
         "confusion_matrix": [
           [
-            4676,
-            438
+            4643,
+            471
           ],
           [
-            302,
-            664
+            255,
+            711
           ]
         ]
       }
@@ -1155,9 +1155,9 @@
         "C": 1.0,
         "class_weight": "balanced"
       },
-      "cv_f1_macro": 0.6299,
-      "cv_f1_macro_std": 0.0027,
-      "cv_accuracy": 0.8387
+      "cv_f1_macro": 0.6212,
+      "cv_f1_macro_std": 0.0087,
+      "cv_accuracy": 0.8351
     },
     {
       "stage": "ajuste",
@@ -1169,9 +1169,9 @@
         "C": 2.0,
         "class_weight": "balanced"
       },
-      "cv_f1_macro": 0.6288,
-      "cv_f1_macro_std": 0.0036,
-      "cv_accuracy": 0.8397
+      "cv_f1_macro": 0.619,
+      "cv_f1_macro_std": 0.0094,
+      "cv_accuracy": 0.8356
     },
     {
       "stage": "ajuste",
@@ -1183,9 +1183,9 @@
         "C": 0.5,
         "class_weight": "balanced"
       },
-      "cv_f1_macro": 0.6278,
-      "cv_f1_macro_std": 0.0039,
-      "cv_accuracy": 0.8356
+      "cv_f1_macro": 0.6178,
+      "cv_f1_macro_std": 0.0083,
+      "cv_accuracy": 0.8319
     },
     {
       "stage": "ajuste",
@@ -1197,9 +1197,9 @@
         "C": 5.0,
         "class_weight": "balanced"
       },
-      "cv_f1_macro": 0.6172,
-      "cv_f1_macro_std": 0.0033,
-      "cv_accuracy": 0.8369
+      "cv_f1_macro": 0.6157,
+      "cv_f1_macro_std": 0.0066,
+      "cv_accuracy": 0.8355
     },
     {
       "stage": "ajuste",
@@ -1211,9 +1211,9 @@
         "C": 5.0,
         "class_weight": null
       },
-      "cv_f1_macro": 0.6023,
-      "cv_f1_macro_std": 0.0162,
-      "cv_accuracy": 0.8652
+      "cv_f1_macro": 0.6047,
+      "cv_f1_macro_std": 0.009,
+      "cv_accuracy": 0.866
     },
     {
       "stage": "ajuste",
@@ -1225,9 +1225,9 @@
         "C": 2.0,
         "class_weight": null
       },
-      "cv_f1_macro": 0.5843,
-      "cv_f1_macro_std": 0.0123,
-      "cv_accuracy": 0.867
+      "cv_f1_macro": 0.5898,
+      "cv_f1_macro_std": 0.0061,
+      "cv_accuracy": 0.8684
     },
     {
       "stage": "ajuste",
@@ -1239,9 +1239,9 @@
         "C": 1.0,
         "class_weight": null
       },
-      "cv_f1_macro": 0.5654,
-      "cv_f1_macro_std": 0.0092,
-      "cv_accuracy": 0.8652
+      "cv_f1_macro": 0.5711,
+      "cv_f1_macro_std": 0.0054,
+      "cv_accuracy": 0.8664
     },
     {
       "stage": "cribado",
@@ -1250,128 +1250,48 @@
       "stopword_list": "adjusted",
       "ngram_range": "1-1",
       "hyperparameters": {},
-      "cv_f1_macro": 0.5654,
-      "cv_f1_macro_std": 0.0092,
-      "cv_accuracy": 0.8652
-    },
-    {
-      "stage": "cribado",
-      "model": "logistic_regression",
-      "normalizer": "stem",
-      "stopword_list": "adjusted",
-      "ngram_range": "1-2",
-      "hyperparameters": {},
-      "cv_f1_macro": 0.5628,
-      "cv_f1_macro_std": 0.0108,
-      "cv_accuracy": 0.8656
-    },
-    {
-      "stage": "cribado",
-      "model": "logistic_regression",
-      "normalizer": "stem",
-      "stopword_list": "spacy_full",
-      "ngram_range": "1-2",
-      "hyperparameters": {},
-      "cv_f1_macro": 0.554,
-      "cv_f1_macro_std": 0.0087,
-      "cv_accuracy": 0.863
+      "cv_f1_macro": 0.5711,
+      "cv_f1_macro_std": 0.0054,
+      "cv_accuracy": 0.8664
     },
     {
       "stage": "ajuste",
       "model": "complement_nb",
-      "normalizer": "lemma",
+      "normalizer": "stem",
       "stopword_list": "adjusted",
       "ngram_range": "1-2",
       "hyperparameters": {
         "alpha": 0.5,
         "norm": false
       },
-      "cv_f1_macro": 0.5531,
-      "cv_f1_macro_std": 0.0056,
-      "cv_accuracy": 0.8354
+      "cv_f1_macro": 0.5625,
+      "cv_f1_macro_std": 0.0071,
+      "cv_accuracy": 0.8413
     },
     {
       "stage": "cribado",
       "model": "logistic_regression",
       "normalizer": "stem",
-      "stopword_list": "spacy_full",
-      "ngram_range": "1-1",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
       "hyperparameters": {},
-      "cv_f1_macro": 0.5524,
-      "cv_f1_macro_std": 0.0098,
-      "cv_accuracy": 0.8622
+      "cv_f1_macro": 0.5595,
+      "cv_f1_macro_std": 0.0059,
+      "cv_accuracy": 0.8643
     },
     {
       "stage": "ajuste",
       "model": "complement_nb",
-      "normalizer": "lemma",
+      "normalizer": "stem",
       "stopword_list": "adjusted",
       "ngram_range": "1-2",
       "hyperparameters": {
-        "alpha": 1.0,
+        "alpha": 0.1,
         "norm": false
       },
-      "cv_f1_macro": 0.5494,
-      "cv_f1_macro_std": 0.0074,
-      "cv_accuracy": 0.8463
-    },
-    {
-      "stage": "cribado",
-      "model": "complement_nb",
-      "normalizer": "lemma",
-      "stopword_list": "adjusted",
-      "ngram_range": "1-2",
-      "hyperparameters": {},
-      "cv_f1_macro": 0.5494,
-      "cv_f1_macro_std": 0.0074,
-      "cv_accuracy": 0.8463
-    },
-    {
-      "stage": "ajuste",
-      "model": "complement_nb",
-      "normalizer": "lemma",
-      "stopword_list": "adjusted",
-      "ngram_range": "1-2",
-      "hyperparameters": {
-        "alpha": 0.5,
-        "norm": true
-      },
-      "cv_f1_macro": 0.5492,
+      "cv_f1_macro": 0.5542,
       "cv_f1_macro_std": 0.0087,
-      "cv_accuracy": 0.8495
-    },
-    {
-      "stage": "cribado",
-      "model": "logistic_regression",
-      "normalizer": "lemma",
-      "stopword_list": "adjusted",
-      "ngram_range": "1-1",
-      "hyperparameters": {},
-      "cv_f1_macro": 0.5491,
-      "cv_f1_macro_std": 0.01,
-      "cv_accuracy": 0.8597
-    },
-    {
-      "stage": "cribado",
-      "model": "complement_nb",
-      "normalizer": "lemma",
-      "stopword_list": "spacy_full",
-      "ngram_range": "1-2",
-      "hyperparameters": {},
-      "cv_f1_macro": 0.5484,
-      "cv_f1_macro_std": 0.0132,
-      "cv_accuracy": 0.8446
-    },
-    {
-      "stage": "cribado",
-      "model": "logistic_regression",
-      "normalizer": "lemma",
-      "stopword_list": "adjusted",
-      "ngram_range": "1-2",
-      "hyperparameters": {},
-      "cv_f1_macro": 0.5473,
-      "cv_f1_macro_std": 0.0089,
-      "cv_accuracy": 0.8589
+      "cv_accuracy": 0.8215
     },
     {
       "stage": "ajuste",
@@ -1383,139 +1303,219 @@
         "C": 0.5,
         "class_weight": null
       },
-      "cv_f1_macro": 0.5462,
-      "cv_f1_macro_std": 0.0085,
-      "cv_accuracy": 0.8602
+      "cv_f1_macro": 0.5521,
+      "cv_f1_macro_std": 0.0036,
+      "cv_accuracy": 0.8606
     },
     {
       "stage": "cribado",
-      "model": "complement_nb",
+      "model": "logistic_regression",
       "normalizer": "stem",
-      "stopword_list": "adjusted",
-      "ngram_range": "1-2",
-      "hyperparameters": {},
-      "cv_f1_macro": 0.5451,
-      "cv_f1_macro_std": 0.0064,
-      "cv_accuracy": 0.8478
-    },
-    {
-      "stage": "cribado",
-      "model": "logistic_regression",
-      "normalizer": "lemma",
-      "stopword_list": "spacy_full",
-      "ngram_range": "1-2",
-      "hyperparameters": {},
-      "cv_f1_macro": 0.5444,
-      "cv_f1_macro_std": 0.0101,
-      "cv_accuracy": 0.858
-    },
-    {
-      "stage": "cribado",
-      "model": "logistic_regression",
-      "normalizer": "lemma",
       "stopword_list": "spacy_full",
       "ngram_range": "1-1",
       "hyperparameters": {},
-      "cv_f1_macro": 0.5434,
-      "cv_f1_macro_std": 0.0112,
-      "cv_accuracy": 0.8573
+      "cv_f1_macro": 0.5521,
+      "cv_f1_macro_std": 0.0047,
+      "cv_accuracy": 0.862
     },
     {
       "stage": "cribado",
-      "model": "complement_nb",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {},
+      "cv_f1_macro": 0.5511,
+      "cv_f1_macro_std": 0.003,
+      "cv_accuracy": 0.862
+    },
+    {
+      "stage": "cribado",
+      "model": "logistic_regression",
       "normalizer": "stem",
       "stopword_list": "spacy_full",
       "ngram_range": "1-2",
       "hyperparameters": {},
-      "cv_f1_macro": 0.543,
-      "cv_f1_macro_std": 0.0143,
-      "cv_accuracy": 0.8453
+      "cv_f1_macro": 0.5506,
+      "cv_f1_macro_std": 0.0046,
+      "cv_accuracy": 0.8624
     },
     {
       "stage": "ajuste",
       "model": "complement_nb",
-      "normalizer": "lemma",
+      "normalizer": "stem",
       "stopword_list": "adjusted",
       "ngram_range": "1-2",
       "hyperparameters": {
-        "alpha": 0.1,
+        "alpha": 1.0,
         "norm": false
       },
-      "cv_f1_macro": 0.5403,
+      "cv_f1_macro": 0.5478,
       "cv_f1_macro_std": 0.0083,
-      "cv_accuracy": 0.8171
-    },
-    {
-      "stage": "cribado",
-      "model": "complement_nb",
-      "normalizer": "lemma",
-      "stopword_list": "spacy_full",
-      "ngram_range": "1-1",
-      "hyperparameters": {},
-      "cv_f1_macro": 0.5289,
-      "cv_f1_macro_std": 0.0101,
-      "cv_accuracy": 0.8217
-    },
-    {
-      "stage": "cribado",
-      "model": "complement_nb",
-      "normalizer": "lemma",
-      "stopword_list": "adjusted",
-      "ngram_range": "1-1",
-      "hyperparameters": {},
-      "cv_f1_macro": 0.5286,
-      "cv_f1_macro_std": 0.0097,
-      "cv_accuracy": 0.8243
-    },
-    {
-      "stage": "cribado",
-      "model": "complement_nb",
-      "normalizer": "stem",
-      "stopword_list": "spacy_full",
-      "ngram_range": "1-1",
-      "hyperparameters": {},
-      "cv_f1_macro": 0.5268,
-      "cv_f1_macro_std": 0.0115,
-      "cv_accuracy": 0.816
+      "cv_accuracy": 0.8497
     },
     {
       "stage": "cribado",
       "model": "complement_nb",
       "normalizer": "stem",
       "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {},
+      "cv_f1_macro": 0.5478,
+      "cv_f1_macro_std": 0.0083,
+      "cv_accuracy": 0.8497
+    },
+    {
+      "stage": "cribado",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
       "ngram_range": "1-1",
       "hyperparameters": {},
-      "cv_f1_macro": 0.5266,
-      "cv_f1_macro_std": 0.0096,
-      "cv_accuracy": 0.8189
+      "cv_f1_macro": 0.5469,
+      "cv_f1_macro_std": 0.0041,
+      "cv_accuracy": 0.8591
     },
     {
       "stage": "ajuste",
       "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": true
+      },
+      "cv_f1_macro": 0.5462,
+      "cv_f1_macro_std": 0.0066,
+      "cv_accuracy": 0.8521
+    },
+    {
+      "stage": "cribado",
+      "model": "complement_nb",
       "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {},
+      "cv_f1_macro": 0.5458,
+      "cv_f1_macro_std": 0.0044,
+      "cv_accuracy": 0.8459
+    },
+    {
+      "stage": "cribado",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {},
+      "cv_f1_macro": 0.5446,
+      "cv_f1_macro_std": 0.0061,
+      "cv_accuracy": 0.8591
+    },
+    {
+      "stage": "cribado",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {},
+      "cv_f1_macro": 0.5436,
+      "cv_f1_macro_std": 0.0044,
+      "cv_accuracy": 0.8592
+    },
+    {
+      "stage": "cribado",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {},
+      "cv_f1_macro": 0.5425,
+      "cv_f1_macro_std": 0.0047,
+      "cv_accuracy": 0.8442
+    },
+    {
+      "stage": "cribado",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {},
+      "cv_f1_macro": 0.5369,
+      "cv_f1_macro_std": 0.0044,
+      "cv_accuracy": 0.8453
+    },
+    {
+      "stage": "cribado",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {},
+      "cv_f1_macro": 0.5327,
+      "cv_f1_macro_std": 0.0059,
+      "cv_accuracy": 0.8222
+    },
+    {
+      "stage": "cribado",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {},
+      "cv_f1_macro": 0.5321,
+      "cv_f1_macro_std": 0.0054,
+      "cv_accuracy": 0.8246
+    },
+    {
+      "stage": "cribado",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {},
+      "cv_f1_macro": 0.5295,
+      "cv_f1_macro_std": 0.0061,
+      "cv_accuracy": 0.8182
+    },
+    {
+      "stage": "cribado",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {},
+      "cv_f1_macro": 0.5281,
+      "cv_f1_macro_std": 0.0052,
+      "cv_accuracy": 0.8157
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
       "stopword_list": "adjusted",
       "ngram_range": "1-2",
       "hyperparameters": {
         "alpha": 1.0,
         "norm": true
       },
-      "cv_f1_macro": 0.5173,
-      "cv_f1_macro_std": 0.0133,
-      "cv_accuracy": 0.8436
+      "cv_f1_macro": 0.5068,
+      "cv_f1_macro_std": 0.0073,
+      "cv_accuracy": 0.8417
     },
     {
       "stage": "ajuste",
       "model": "complement_nb",
-      "normalizer": "lemma",
+      "normalizer": "stem",
       "stopword_list": "adjusted",
       "ngram_range": "1-2",
       "hyperparameters": {
         "alpha": 0.1,
         "norm": true
       },
-      "cv_f1_macro": 0.4802,
-      "cv_f1_macro_std": 0.0058,
-      "cv_accuracy": 0.6878
+      "cv_f1_macro": 0.4839,
+      "cv_f1_macro_std": 0.0024,
+      "cv_accuracy": 0.694
     },
     {
       "stage": "línea base",
@@ -1533,20 +1533,20 @@
   ],
   "factor_effects": {
     "normalizer": {
-      "lemma": 0.5494,
-      "stem": 0.5654
+      "lemma": 0.5511,
+      "stem": 0.5711
     },
     "stopword_list": {
-      "adjusted": 0.5654,
-      "spacy_full": 0.554
+      "adjusted": 0.5711,
+      "spacy_full": 0.5521
     },
     "ngram_range": {
-      "1-1": 0.5654,
-      "1-2": 0.5628
+      "1-1": 0.5711,
+      "1-2": 0.5595
     },
     "model": {
-      "complement_nb": 0.5494,
-      "logistic_regression": 0.5654
+      "complement_nb": 0.5478,
+      "logistic_regression": 0.5711
     }
   },
   "tfidf": {
@@ -1555,89 +1555,174 @@
     "max_df": 0.9,
     "sublinear_tf": true
   },
-  "vocabulary_size": 9961,
+  "vocabulary_size": 9842,
   "accuracy_by_phenomenon": [
     {
       "fenomeno": "ofuscación (p3ndejo)",
-      "n": 31,
-      "accuracy": 0.7419
-    },
-    {
-      "fenomeno": "texto muy corto (<5 palabras)",
-      "n": 286,
-      "accuracy": 0.8077
-    },
-    {
-      "fenomeno": "ninguno de los anteriores",
-      "n": 1639,
-      "accuracy": 0.8188
+      "n": 39,
+      "accuracy": 0.7692
     },
     {
       "fenomeno": "mayúsculas (gritos)",
       "n": 111,
-      "accuracy": 0.8198
+      "accuracy": 0.7928
     },
     {
-      "fenomeno": "risas",
-      "n": 394,
-      "accuracy": 0.8299
+      "fenomeno": "texto muy corto (<5 palabras)",
+      "n": 298,
+      "accuracy": 0.802
+    },
+    {
+      "fenomeno": "ninguno de los anteriores",
+      "n": 1612,
+      "accuracy": 0.822
     },
     {
       "fenomeno": "negación",
-      "n": 2792,
-      "accuracy": 0.846
+      "n": 2778,
+      "accuracy": 0.8398
+    },
+    {
+      "fenomeno": "risas",
+      "n": 413,
+      "accuracy": 0.8596
     },
     {
       "fenomeno": "texto largo (≥30 palabras)",
-      "n": 2240,
-      "accuracy": 0.8616
+      "n": 2227,
+      "accuracy": 0.8612
     },
     {
       "fenomeno": "emojis",
-      "n": 1235,
-      "accuracy": 0.8923
+      "n": 1273,
+      "accuracy": 0.8971
     }
   ],
   "accuracy_by_platform": [
     {
-      "plataforma": "twitter",
-      "n": 410,
-      "accuracy": 0.8317
+      "plataforma": "youtube",
+      "n": 4488,
+      "accuracy": 0.8347
     },
     {
-      "plataforma": "youtube",
-      "n": 4448,
-      "accuracy": 0.8348
+      "plataforma": "twitter",
+      "n": 394,
+      "accuracy": 0.8477
     },
     {
       "plataforma": "instagram",
-      "n": 1222,
-      "accuracy": 0.8723
+      "n": 1198,
+      "accuracy": 0.8639
     }
   ],
   "error_examples": [
+    {
+      "id": "train-15103",
+      "texto": "Coño Alexelcapo",
+      "real": "NO",
+      "predicho": "NOE",
+      "probabilidad": 0.9995,
+      "prob_ofensivo": 0.0005,
+      "plataforma": "youtube",
+      "fenomenos": [
+        "texto muy corto (<5 palabras)"
+      ]
+    },
     {
       "id": "train-52593",
       "texto": "Hijos de puta lleváis una jodida semana anunciándolo...me caguen vuestra puta madre quiero ver esos 3 jodidos vídeos coño!!!",
       "real": "OFP",
       "predicho": "NOE",
-      "probabilidad": 0.999,
-      "prob_ofensivo": 0.001,
+      "probabilidad": 0.9991,
+      "prob_ofensivo": 0.0009,
       "plataforma": "instagram",
       "fenomenos": [
         "ninguno de los anteriores"
       ]
     },
     {
-      "id": "train-36347",
-      "texto": "Ahora quien está gordo?",
+      "id": "train-58395",
+      "texto": "No eres gordo no cuenta",
       "real": "NO",
       "predicho": "OFP",
-      "probabilidad": 0.9978,
+      "probabilidad": 0.9984,
       "prob_ofensivo": 0.999,
+      "plataforma": "instagram",
+      "fenomenos": [
+        "negación"
+      ]
+    },
+    {
+      "id": "train-33575",
+      "texto": "*_ZELLEN PUTO AMO._*",
+      "real": "NO",
+      "predicho": "NOE",
+      "probabilidad": 0.996,
+      "prob_ofensivo": 0.0039,
+      "plataforma": "youtube",
+      "fenomenos": [
+        "mayúsculas (gritos)",
+        "texto muy corto (<5 palabras)"
+      ]
+    },
+    {
+      "id": "train-51838",
+      "texto": "PUTO",
+      "real": "OFP",
+      "predicho": "NOE",
+      "probabilidad": 0.9944,
+      "prob_ofensivo": 0.0056,
+      "plataforma": "instagram",
+      "fenomenos": [
+        "texto muy corto (<5 palabras)"
+      ]
+    },
+    {
+      "id": "train-48915",
+      "texto": "Putos delinquentes",
+      "real": "OFG",
+      "predicho": "NOE",
+      "probabilidad": 0.9944,
+      "prob_ofensivo": 0.0056,
       "plataforma": "youtube",
       "fenomenos": [
         "texto muy corto (<5 palabras)"
+      ]
+    },
+    {
+      "id": "train-26385",
+      "texto": "3:35 el puto mejor HAHAHA",
+      "real": "NO",
+      "predicho": "NOE",
+      "probabilidad": 0.9914,
+      "prob_ofensivo": 0.0086,
+      "plataforma": "youtube",
+      "fenomenos": [
+        "risas"
+      ]
+    },
+    {
+      "id": "train-8536",
+      "texto": "Me gustó tu vídeo. Una cagada las cosas que hace windy es una mala persona e hipócrita.",
+      "real": "NOE",
+      "predicho": "OFP",
+      "probabilidad": 0.9847,
+      "prob_ofensivo": 0.9865,
+      "plataforma": "youtube",
+      "fenomenos": [
+        "ninguno de los anteriores"
+      ]
+    },
+    {
+      "id": "test-55210",
+      "texto": "La gente es mala miare lo único que sabe hacer la gente es criticar por todo pero esa gente no se ven a ello mismo Cómo son",
+      "real": "NO",
+      "predicho": "OFG",
+      "probabilidad": 0.9791,
+      "prob_ofensivo": 0.9807,
+      "plataforma": "instagram",
+      "fenomenos": [
+        "negación"
       ]
     },
     {
@@ -1645,116 +1730,32 @@
       "texto": "Que te ha pasado en el dedo gordo?????😯",
       "real": "NO",
       "predicho": "OFP",
-      "probabilidad": 0.9887,
-      "prob_ofensivo": 0.9907,
+      "probabilidad": 0.9768,
+      "prob_ofensivo": 0.9858,
       "plataforma": "youtube",
       "fenomenos": [
         "emojis"
       ]
     },
     {
-      "id": "train-27489",
-      "texto": "Que hipócrita todo",
-      "real": "NOE",
+      "id": "test-2683",
+      "texto": "Ser payaso es malo?",
+      "real": "NO",
       "predicho": "OFP",
-      "probabilidad": 0.9883,
-      "prob_ofensivo": 0.9957,
-      "plataforma": "youtube",
-      "fenomenos": [
-        "texto muy corto (<5 palabras)"
-      ]
-    },
-    {
-      "id": "test-5138",
-      "texto": "Puto tocino",
-      "real": "OFP",
-      "predicho": "NOE",
-      "probabilidad": 0.9868,
-      "prob_ofensivo": 0.0132,
-      "plataforma": "youtube",
-      "fenomenos": [
-        "texto muy corto (<5 palabras)"
-      ]
-    },
-    {
-      "id": "test-1521",
-      "texto": "Puto X)",
-      "real": "OFP",
-      "predicho": "NOE",
-      "probabilidad": 0.9868,
-      "prob_ofensivo": 0.0132,
+      "probabilidad": 0.9757,
+      "prob_ofensivo": 0.9986,
       "plataforma": "twitter",
       "fenomenos": [
         "texto muy corto (<5 palabras)"
       ]
     },
     {
-      "id": "train-27511",
-      "texto": "Por primera vez Wismichu a sido un puto amo y a dado unas grandes recomendación",
-      "real": "NO",
+      "id": "test-23015",
+      "texto": "que coño dice esta tia?",
+      "real": "OFP",
       "predicho": "NOE",
-      "probabilidad": 0.9774,
-      "prob_ofensivo": 0.0205,
-      "plataforma": "youtube",
-      "fenomenos": [
-        "ninguno de los anteriores"
-      ]
-    },
-    {
-      "id": "train-25312",
-      "texto": "Desde mi punto de vista es una pco hipócrita tu crítica",
-      "real": "NO",
-      "predicho": "OFP",
-      "probabilidad": 0.9763,
-      "prob_ofensivo": 0.9808,
-      "plataforma": "youtube",
-      "fenomenos": [
-        "ninguno de los anteriores"
-      ]
-    },
-    {
-      "id": "train-7216",
-      "texto": "A ver si solo os vais a quejar solo los putos gordos",
-      "real": "OFG",
-      "predicho": "OFP",
-      "probabilidad": 0.9736,
-      "prob_ofensivo": 0.9771,
-      "plataforma": "youtube",
-      "fenomenos": [
-        "ninguno de los anteriores"
-      ]
-    },
-    {
-      "id": "train-23784",
-      "texto": "Hoy el horóscopo me dijo que iba a morir pero yo ya estoy muerto por dentro, siempre un paso por delante de los putos planetas joder.",
-      "real": "NO",
-      "predicho": "NOE",
-      "probabilidad": 0.9656,
-      "prob_ofensivo": 0.0308,
-      "plataforma": "youtube",
-      "fenomenos": [
-        "ninguno de los anteriores"
-      ]
-    },
-    {
-      "id": "train-44989",
-      "texto": "Si tienes huevos haz un CSI: Muzska y nos dices dónde coño está y que ha pasado con él :'(",
-      "real": "NO",
-      "predicho": "NOE",
-      "probabilidad": 0.9577,
-      "prob_ofensivo": 0.0378,
-      "plataforma": "youtube",
-      "fenomenos": [
-        "ninguno de los anteriores"
-      ]
-    },
-    {
-      "id": "train-17526",
-      "texto": "Conclusión: los payasos son payasos =v",
-      "real": "NO",
-      "predicho": "OFG",
-      "probabilidad": 0.9573,
-      "prob_ofensivo": 0.9983,
+      "probabilidad": 0.974,
+      "prob_ofensivo": 0.0255,
       "plataforma": "youtube",
       "fenomenos": [
         "ninguno de los anteriores"
@@ -1765,201 +1766,201 @@
     "NO": [
       [
         "encant",
-        2.435
-      ],
-      [
-        "hermos",
-        1.911
-      ],
-      [
-        "tem",
-        1.813
+        2.437
       ],
       [
         "xxemojipositivo",
-        1.775
+        1.979
+      ],
+      [
+        "tem",
+        1.858
+      ],
+      [
+        "hermos",
+        1.815
       ],
       [
         "ayud",
-        1.693
-      ],
-      [
-        "recuerd",
-        1.662
+        1.517
       ],
       [
         "no",
-        1.544
+        1.508
+      ],
+      [
+        "mon",
+        1.488
+      ],
+      [
+        "recuerd",
+        1.438
+      ],
+      [
+        "entrev",
+        1.406
       ],
       [
         "bes",
-        1.538
+        1.4
       ],
       [
-        "vide",
-        1.528
-      ],
-      [
-        "luc",
-        1.371
-      ],
-      [
-        "lik",
-        1.367
+        "pat",
+        1.385
       ],
       [
         "opinion",
-        1.362
+        1.371
       ]
     ],
     "NOE": [
       [
-        "coñ",
-        7.487
+        "put",
+        7.745
       ],
       [
-        "put",
-        6.809
+        "coñ",
+        7.597
       ],
       [
         "mierd",
-        5.423
+        5.794
       ],
       [
         "jod",
-        5.019
+        4.676
       ],
       [
         "verg",
-        4.482
+        4.394
       ],
       [
         "poll",
-        4.094
-      ],
-      [
-        "amo",
-        3.44
+        3.996
       ],
       [
         "cac",
-        3.27
+        3.188
       ],
       [
-        "osti",
-        2.893
-      ],
-      [
-        "cag",
-        2.829
-      ],
-      [
-        "ped",
-        2.677
+        "amo",
+        2.97
       ],
       [
         "ching",
-        2.595
+        2.956
+      ],
+      [
+        "ped",
+        2.729
+      ],
+      [
+        "cabron",
+        2.683
+      ],
+      [
+        "cag",
+        2.609
       ]
     ],
     "OFG": [
       [
         "gent",
-        6.663
+        6.683
       ],
       [
         "son",
-        5.174
+        5.324
       ],
       [
-        "gentuz",
-        4.469
+        "feminazis",
+        4.704
       ],
       [
         "retras",
-        4.451
-      ],
-      [
-        "payas",
-        4.064
-      ],
-      [
-        "fans",
-        3.923
-      ],
-      [
-        "simi",
-        3.85
+        4.459
       ],
       [
         "gilipoll",
-        3.845
-      ],
-      [
-        "influyent",
-        3.587
-      ],
-      [
-        "famili",
-        3.577
-      ],
-      [
-        "esos",
-        3.537
+        4.026
       ],
       [
         "esas",
-        3.338
+        3.718
+      ],
+      [
+        "simi",
+        3.71
+      ],
+      [
+        "famili",
+        3.57
+      ],
+      [
+        "delincuent",
+        3.546
+      ],
+      [
+        "rien",
+        3.52
+      ],
+      [
+        "influencers",
+        3.439
+      ],
+      [
+        "timador",
+        3.404
       ]
     ],
     "OFP": [
       [
         "gord",
-        5.224
+        4.549
       ],
       [
         "hipocrit",
-        4.212
-      ],
-      [
-        "ridicul",
-        4.054
-      ],
-      [
-        "eres",
-        3.976
-      ],
-      [
-        "tu",
-        3.443
-      ],
-      [
-        "fals",
-        3.32
-      ],
-      [
-        "fea",
-        3.291
+        4.273
       ],
       [
         "payas",
-        3.267
+        4.137
       ],
       [
-        "tont",
-        3.163
+        "eres",
+        3.99
+      ],
+      [
+        "ridicul",
+        3.918
+      ],
+      [
+        "tu",
+        3.435
+      ],
+      [
+        "fals",
+        3.411
       ],
       [
         "das",
-        3.083
+        3.289
+      ],
+      [
+        "fea",
+        3.246
       ],
       [
         "vet",
-        2.994
+        3.213
       ],
       [
-        "idiot",
-        2.769
+        "tont",
+        3.187
+      ],
+      [
+        "sos",
+        3.038
       ]
     ]
   }
