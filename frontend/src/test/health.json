@@ -1,0 +1,9 @@
+{
+ "estado": "ok",
+ "modelo_cargado": true,
+ "modelo": "Naive Bayes complementario",
+ "version": "20261031-011843",
+ "datos": "sintetico",
+ "modo_demo": true,
+ "base_de_datos": "no configurada"
+}

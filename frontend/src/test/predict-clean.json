@@ -1,0 +1,89 @@
+{
+ "clase": "NO",
+ "ofensivo": false,
+ "probabilidad": 0.9068,
+ "probabilidad_ofensivo": 0.0613,
+ "probabilidades": {
+  "NO": 0.9068,
+  "NOE": 0.0319,
+  "OFP": 0.0283,
+  "OFG": 0.0331
+ },
+ "nombre_clase": "No ofensivo",
+ "descripcion": "Texto sin ofensas ni palabras fuertes.",
+ "umbral": 0.5,
+ "explicacion": {
+  "clase": [
+   {
+    "termino": "bolivi",
+    "palabra": "bolivia",
+    "peso": 0.9809
+   },
+   {
+    "termino": "salud",
+    "palabra": "saludos",
+    "peso": 0.6954
+   },
+   {
+    "termino": "encant",
+    "palabra": "encantó",
+    "peso": 0.6691
+   },
+   {
+    "termino": "vide",
+    "palabra": "video",
+    "peso": 0.1866
+   }
+  ],
+  "ofensivo": []
+ },
+ "preprocesamiento": {
+  "original": "Me encantó el video, saludos desde Bolivia",
+  "normalizado": "me encantó el video saludos desde bolivia",
+  "tokens": [
+   "me",
+   "encantó",
+   "el",
+   "video",
+   "saludos",
+   "desde",
+   "bolivia"
+  ],
+  "stopwords_eliminadas": [
+   "me",
+   "el",
+   "desde"
+  ],
+  "sin_stopwords": [
+   "encantó",
+   "video",
+   "saludos",
+   "bolivia"
+  ],
+  "raices": [
+   "encant",
+   "vide",
+   "salud",
+   "bolivi"
+  ],
+  "final": [
+   "encant",
+   "vide",
+   "salud",
+   "bolivi"
+  ],
+  "metodo": "stem",
+  "senales": {
+   "mayusculas": false,
+   "ofuscadas": [],
+   "emojis": [],
+   "risas": false
+  }
+ },
+ "modelo": {
+  "nombre": "Naive Bayes complementario",
+  "version": "20261031-011843"
+ },
+ "modo_demo": true,
+ "tiempo_ms": 4.0
+}

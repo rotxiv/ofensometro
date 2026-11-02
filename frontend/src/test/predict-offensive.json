@@ -1,0 +1,131 @@
+{
+ "clase": "OFP",
+ "ofensivo": true,
+ "probabilidad": 0.849,
+ "probabilidad_ofensivo": 0.9377,
+ "probabilidades": {
+  "NO": 0.0058,
+  "NOE": 0.0565,
+  "OFP": 0.849,
+  "OFG": 0.0887
+ },
+ "nombre_clase": "Ofensivo a una persona",
+ "descripcion": "Ofensa dirigida a un individuo concreto.",
+ "umbral": 0.5,
+ "explicacion": {
+  "clase": [
+   {
+    "termino": "nadi",
+    "palabra": "nadie",
+    "peso": 0.7013
+   },
+   {
+    "termino": "soport",
+    "palabra": "soporta",
+    "peso": 0.7013
+   },
+   {
+    "termino": "xxemojiofensivo",
+    "palabra": "(emoji ofensivo)",
+    "peso": 0.4994
+   },
+   {
+    "termino": "idiot",
+    "palabra": "idiota",
+    "peso": 0.3971
+   },
+   {
+    "termino": "eres",
+    "palabra": "eres",
+    "peso": 0.1648
+   }
+  ],
+  "ofensivo": [
+   {
+    "termino": "nadi",
+    "palabra": "nadie",
+    "peso": 0.7471
+   },
+   {
+    "termino": "soport",
+    "palabra": "soporta",
+    "peso": 0.7471
+   },
+   {
+    "termino": "xxemojiofensivo",
+    "palabra": "(emoji ofensivo)",
+    "peso": 0.5785
+   },
+   {
+    "termino": "idiot",
+    "palabra": "idiota",
+    "peso": 0.4618
+   },
+   {
+    "termino": "eres",
+    "palabra": "eres",
+    "peso": 0.1757
+   }
+  ]
+ },
+ "preprocesamiento": {
+  "original": "ERES UN 1di0ta, nadie te soporta 🤡",
+  "normalizado": "eres un idiota nadie te soporta xxemojiofensivo",
+  "tokens": [
+   "eres",
+   "un",
+   "idiota",
+   "nadie",
+   "te",
+   "soporta",
+   "xxemojiofensivo"
+  ],
+  "stopwords_eliminadas": [
+   "un"
+  ],
+  "sin_stopwords": [
+   "eres",
+   "idiota",
+   "nadie",
+   "te",
+   "soporta",
+   "xxemojiofensivo"
+  ],
+  "raices": [
+   "eres",
+   "idiot",
+   "nadi",
+   "te",
+   "soport",
+   "xxemojiofensivo"
+  ],
+  "final": [
+   "eres",
+   "idiot",
+   "nadi",
+   "te",
+   "soport",
+   "xxemojiofensivo"
+  ],
+  "metodo": "stem",
+  "senales": {
+   "mayusculas": false,
+   "ofuscadas": [
+    {
+     "original": "1di0ta,",
+     "normal": "idiota,"
+    }
+   ],
+   "emojis": [
+    "🤡"
+   ],
+   "risas": false
+  }
+ },
+ "modelo": {
+  "nombre": "Naive Bayes complementario",
+  "version": "20261031-011843"
+ },
+ "modo_demo": true,
+ "tiempo_ms": 4.9
+}

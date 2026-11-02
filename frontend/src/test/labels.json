@@ -1,0 +1,26 @@
+[
+ {
+  "codigo": "NO",
+  "nombre": "No ofensivo",
+  "descripcion": "Texto sin ofensas ni palabras fuertes.",
+  "ofensivo": false
+ },
+ {
+  "codigo": "NOE",
+  "nombre": "No ofensivo con groserías",
+  "descripcion": "Usa palabras fuertes, pero sin intención de ofender (suele ser positivo).",
+  "ofensivo": false
+ },
+ {
+  "codigo": "OFP",
+  "nombre": "Ofensivo a una persona",
+  "descripcion": "Ofensa dirigida a un individuo concreto.",
+  "ofensivo": true
+ },
+ {
+  "codigo": "OFG",
+  "nombre": "Ofensivo a un grupo",
+  "descripcion": "Ofensa dirigida a un colectivo (étnico, género, ideología, religión...).",
+  "ofensivo": true
+ }
+]

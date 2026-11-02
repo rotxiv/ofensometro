@@ -1,0 +1,61 @@
+{
+ "total": 3,
+ "ofensivos": 2,
+ "resumen": {
+  "NO": 1,
+  "NOE": 0,
+  "OFP": 1,
+  "OFG": 1
+ },
+ "resultados": [
+  {
+   "clase": "NO",
+   "ofensivo": false,
+   "probabilidad": 0.375,
+   "probabilidad_ofensivo": 0.3998,
+   "probabilidades": {
+    "NO": 0.375,
+    "NOE": 0.2252,
+    "OFP": 0.1916,
+    "OFG": 0.2081
+   },
+   "fila": 1,
+   "texto": "Qué buen video"
+  },
+  {
+   "clase": "OFP",
+   "ofensivo": true,
+   "probabilidad": 0.4677,
+   "probabilidad_ofensivo": 0.6993,
+   "probabilidades": {
+    "NO": 0.0859,
+    "NOE": 0.2149,
+    "OFP": 0.4677,
+    "OFG": 0.2316
+   },
+   "fila": 2,
+   "texto": "Eres un payaso"
+  },
+  {
+   "clase": "OFG",
+   "ofensivo": true,
+   "probabilidad": 0.9903,
+   "probabilidad_ofensivo": 0.9956,
+   "probabilidades": {
+    "NO": 0.0004,
+    "NOE": 0.0041,
+    "OFP": 0.0053,
+    "OFG": 0.9903
+   },
+   "fila": 3,
+   "texto": "Todos los gamers son unos inútiles"
+  }
+ ],
+ "omitidas": [
+  {
+   "fila": 4,
+   "motivo": "El texto no contiene palabras."
+  }
+ ],
+ "modo_demo": true
+}
