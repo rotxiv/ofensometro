@@ -1,0 +1,21 @@
+# Solo el frontend. Necesita una API accesible en API_UPSTREAM (por defecto, la del equipo en :8000).
+#
+#   docker compose up --build        ->  http://localhost:8080
+#
+# Para unirlo con el backend en un mismo compose, ver el README (sección «Con el backend»).
+
+name: ofensometro-web
+
+services:
+  web:
+    image: ofensometro-web
+    build: .
+    restart: unless-stopped
+    environment:
+      # Dirección de la API vista DESDE el contenedor. Sin barra final.
+      API_UPSTREAM: ${API_UPSTREAM:-http://host.docker.internal:8000}
+    extra_hosts:
+      # En Linux, host.docker.internal no existe por defecto: esto lo apunta al equipo anfitrión.
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "${WEB_PORT:-8080}:80"

@@ -1,0 +1,41 @@
+# Plantilla de nginx. La imagen oficial reemplaza ${API_UPSTREAM} con la variable de entorno del
+# mismo nombre al arrancar el contenedor (solo las variables definidas: $host y las demás de nginx
+# quedan intactas). API_UPSTREAM es la dirección de la API SIN barra final: http://api:8000
+#
+# Sirve la aplicación compilada y reenvía /api a la API. Así el navegador solo habla con un
+# origen y no hace falta CORS.
+
+server {
+    listen 80;
+    server_name _;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # La API acepta archivos de hasta 1 MB; se deja margen para el formulario.
+    client_max_body_size 2m;
+
+    gzip on;
+    gzip_types text/css application/javascript application/json image/svg+xml;
+
+    location /api/ {
+        proxy_pass ${API_UPSTREAM};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 60s;
+    }
+
+    # Los archivos de /assets/ llevan el hash de su contenido en el nombre: se pueden guardar para siempre.
+    location /assets/ {
+        add_header Cache-Control "public, max-age=31536000, immutable";
+        try_files $uri =404;
+    }
+
+    # index.html nunca se guarda en caché: así una versión nueva se ve al recargar.
+    location / {
+        add_header Cache-Control "no-cache";
+        try_files $uri /index.html;
+    }
+}
