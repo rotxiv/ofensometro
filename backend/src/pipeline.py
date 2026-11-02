@@ -26,6 +26,7 @@ No encuentro los datos reales: {path}
 """
 
 def parse_args(argv=None) -> argparse.Namespace:
+    """Parsea los argumentos de línea de comandos y devuelve un Namespace."""
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--skip-if-trained", action="store_true",

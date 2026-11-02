@@ -65,6 +65,7 @@ class Repository:
         self.engine = engine
 
     def is_reachable(self) -> bool:
+        """Devuelve True si la base de datos responde, False si no hay conexión."""
         try:
             with self.engine.connect() as conn:
                 conn.execute(text("SELECT 1"))
@@ -75,6 +76,7 @@ class Repository:
     # -- comentarios -------------------------------------------------------------------
 
     def comment_count(self) -> int:
+        """Devuelve la cantidad de comentarios guardados en la base de datos."""
         with self.engine.connect() as conn:
             return conn.execute(select(func.count()).select_from(COMMENTS)).scalar_one()
 
@@ -84,6 +86,9 @@ class Repository:
             return set(conn.execute(select(COMMENTS.c.fuente).distinct()).scalars())
 
     def replace_comments(self, frame: pd.DataFrame) -> None:
+        """
+        Reemplaza todos los comentarios guardados en la base de datos por los del DataFrame.
+        """
         columns = [column.name for column in COMMENTS.columns]
         records = (frame[columns].astype(object).where(frame[columns].notna(), None)
                    .to_dict("records"))
@@ -100,6 +105,7 @@ class Repository:
     # -- entrenamientos ----------------------------------------------------------------
 
     def add_training(self, run: dict) -> None:
+        """Agrega un entrenamiento a la base de datos."""
         with self.engine.begin() as conn:
             conn.execute(insert(TRAININGS), [run])
 

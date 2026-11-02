@@ -1,24 +1,69 @@
 """Archivo de configuración para la aplicación."""
 
 from pathlib import Path
-from functools import lru_cache
+from functools import cache
+from dataclasses import dataclass
 
 import os
 import yaml
+from dotenv import load_dotenv
 
-ROOT = Path(os.getenv("ROOT", Path.home() / "ofensometro"))
-ARTIFACTS_DIR = Path(os.getenv("ARTIFACTS_DIR", ROOT / "artifacts"))
-PARAMS_PATH = Path(os.getenv("PARAMS_PATH", ROOT / "params.yaml"))
+ROOT = Path(__file__).resolve().parent.parent
+load_dotenv(ROOT / ".env")
 
-MODEL_PATH = ARTIFACTS_DIR / "model.joblib"
+@dataclass(frozen=True)
+class Locations:
+    """Rutas de entrada y salida. Se pueden redirigir con variables de entorno"""
+    params: Path
+    artifacts: Path
 
-@lru_cache
+    @classmethod
+    def from_environment(cls) -> "Locations":
+        """
+        Crea un objeto Locations usando las variables de entorno:
+            - PARAMS_PATH: ruta al archivo params.yaml
+            - ARTIFACTS_DIR: ruta al directorio de artefactos
+        """
+        return cls(params=Path(os.getenv("PARAMS_PATH", ROOT / "params.yaml")),
+                   artifacts=Path(os.getenv("ARTIFACTS_DIR", ROOT / "artifacts")))
+
+    @property
+    def model(self) -> Path:
+        """Ruta al archivo del modelo entrenado."""
+        return self.artifacts / "model.joblib"
+
+    @property
+    def metrics(self) -> Path:
+        """Ruta al archivo de métricas del último entrenamiento."""
+        return self.artifacts / "metrics.json"
+
+    @property
+    def experiments(self) -> Path:
+        """Ruta al archivo de experimentos (historial de entrenamientos)."""
+        return self.artifacts / "experiments.csv"
+
+    @property
+    def errors(self) -> Path:
+        """Ruta al archivo de errores de predicción."""
+        return self.artifacts / "errors.csv"
+
+LOCATIONS = Locations.from_environment()
+
+# Nombres cortos que usan el resto de módulos.
+PARAMS_PATH = LOCATIONS.params
+ARTIFACTS_DIR = LOCATIONS.artifacts
+MODEL_PATH = LOCATIONS.model
+METRICS_PATH = LOCATIONS.metrics
+EXPERIMENTS_PATH = LOCATIONS.experiments
+ERRORS_PATH = LOCATIONS.errors
+
+@cache
 def load_params() -> dict:
-    """Carga los parámetros de configuración desde params.yaml."""
-    with open(PARAMS_PATH, encoding="utf-8") as f:
-        return yaml.safe_load(f)
+    """Carga los parámetros de params.yaml y los devuelve como un diccionario."""
+    return yaml.safe_load(PARAMS_PATH.read_text(encoding="utf-8"))
 
 def label_info() -> dict:
+    """Devuelve la información de las clases, tal como está en params.yaml."""
     return load_params()["labels"]
 
 def labels() -> list[str]:

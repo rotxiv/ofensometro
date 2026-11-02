@@ -1,6 +1,8 @@
 -- Se ejecuta la primera vez que el contenedor de PostgreSQL 
 -- arranca con el volumen vacío.
 
+-- La base de datos se llama "ofensometro"
+
 -- Dataset crudo, (con textos vacíos y duplicados).
 CREATE TABLE IF NOT EXISTS comentarios (
     id          TEXT PRIMARY KEY,

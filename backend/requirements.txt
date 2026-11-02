@@ -12,6 +12,7 @@ emoji==2.16.0
 
 # Requerimientos para Configuración
 pyyaml==6.0.3
+python-dotenv==1.1.1
 
 # Requerimientos para el Backend y base de datos
 fastapi==0.161.0
