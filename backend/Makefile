@@ -21,10 +21,6 @@ train:               ## reentrena con datos reales y reinicia la API
 	$(TRAINER) python -m src.pipeline --reload-data
 	$(COMPOSE) restart api
 
-train-demo:          ## reentrena con datos SINTÉTICOS (solo para probar)
-	$(TRAINER) python -m src.pipeline --synthetic
-	$(COMPOSE) restart api
-
 test:                ## pruebas automáticas dentro del contenedor
 	$(COMPOSE) --profile dev run --rm --build tests
 
@@ -38,4 +34,4 @@ clean:               ## detiene todo y borra la base y los artefactos
 	$(COMPOSE) down -v
 	find artifacts -type f ! -name .gitkeep -delete
 
-.PHONY: help up ingest train train-demo test logs down clean
+.PHONY: help up ingest train test logs down clean

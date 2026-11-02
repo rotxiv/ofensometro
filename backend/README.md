@@ -31,13 +31,11 @@ flowchart LR
 ### Con Docker (recomendado)
 
 Requisitos: Docker con Compose v2 y ~3 GB libres.
+En las secciones 'password' de docker-compose ingresa tu contraseña de PostgesSQL
 
 ```bash
 docker compose up --build
 ```
-
-Sin datos reales, el `trainer` entrena con **datos sintéticos de demostración** y la API responde
-`modo_demo: true` (la web muestra un aviso). Después abre:
 
 - Aplicación web: http://localhost:8080
 - Documentación de la API: http://localhost:8000/api/docs
@@ -72,7 +70,6 @@ uvicorn api.main:app --reload                          # http://localhost:8000/a
 | Levantar todo en segundo plano | `docker compose up --build -d` | `make up` |
 | Convertir OffendES al formato del proyecto | `docker compose run --rm trainer python -m src.data.ingest` | `make ingest` |
 | Reentrenar con datos reales y reiniciar la API | `docker compose run --rm trainer python -m src.pipeline --reload-data` + `docker compose restart api` | `make train` |
-| Entrenar con datos sintéticos | `... python -m src.pipeline --synthetic` | `make train-demo` |
 | Pruebas automáticas | `docker compose --profile dev run --rm --build tests` | `make test` |
 | Reconstruir la web tras cambiar `frontend/` | `docker compose up -d --build web` | `make web` |
 | Ver la base en el navegador | `docker compose --profile tools up -d adminer` → http://localhost:8081 | |
@@ -154,7 +151,7 @@ propios de este proyecto.
 
 | Situación | Qué hacer |
 |---|---|
-| `No encuentro los datos reales` | Falta `data/raw/comentarios.csv`: ver «Pasar a los datos reales», o usa `--synthetic`. |
+| `No encuentro los datos reales` | Falta `data/raw/comentarios.csv`: ver «Usando los datos reales». |
 | `faltan las columnas [...]` al ingerir | Tus archivos traen otros nombres: ajusta `params.yaml → data.source.columns`. |
 | `/api/health` dice `modo_demo: true` | El modelo se entrenó con datos sintéticos. Entrena con OffendES. |
 | Cambié `params.yaml` y la API muestra lo mismo | El modelo se carga al iniciar: reentrena y reinicia la API. |

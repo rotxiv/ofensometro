@@ -13,7 +13,8 @@
 name: ofensometro
 
 x-app-env: &app-env
-  DATABASE_URL: postgresql+psycopg://ofensometro:ofensometro@db:5432/ofensometro
+  # Cambia 'password' por tu contraseña segura para PostgreSQL.
+  DATABASE_URL: postgresql+psycopg://postgres:password@db:5432/ofensometro
   CORS_ORIGINS: ${CORS_ORIGINS:-*}
 
 # Código y datos montados: se edita params.yaml o src/ y se reentrena sin reconstruir la imagen.
@@ -29,8 +30,8 @@ services:
   db:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: ofensometro
-      POSTGRES_PASSWORD: ofensometro
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password           # Ingresa aquí tu contraseña segura para PostgreSQL
       POSTGRES_DB: ofensometro
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -38,7 +39,7 @@ services:
     ports:
       - "${DB_PORT:-5433}:5432"          # 5433 afuera, para no chocar con un PostgreSQL local
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ofensometro -d ofensometro"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ofensometro"]
       interval: 3s
       timeout: 3s
       retries: 20
@@ -48,8 +49,8 @@ services:
     build: {context: ., target: runtime}
     environment: *app-env
     volumes: *app-mounts
-    # Sin datos reales entrena con los sintéticos, y la API avisa con modo_demo=true.
-    command: python -m src.pipeline --skip-if-trained --synthetic-if-missing
+    # El pipeline requiere el CSV real y falla si no está disponible.
+    command: python -m src.pipeline --skip-if-trained
     depends_on:
       db: {condition: service_healthy}
 
