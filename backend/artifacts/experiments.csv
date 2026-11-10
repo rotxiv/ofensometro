@@ -1,32 +1,114 @@
 stage,model,normalizer,stopword_list,ngram_range,hyperparameters,cv_f1_macro,cv_f1_macro_std,cv_accuracy
+ajuste,logistic_regression,stem,adjusted,1-2,"{""C"": 1.0, ""class_weight"": ""balanced""}",0.6344,0.0103,0.8504
+ajuste,logistic_regression,stem,adjusted,1-2,"{""C"": 2.0, ""class_weight"": ""balanced""}",0.6332,0.0112,0.8539
+ajuste,logistic_regression,stem,adjusted,1-2,"{""C"": 5.0, ""class_weight"": ""balanced""}",0.6299,0.0118,0.8544
+ajuste,logistic_regression,stem,adjusted,1-2,"{""C"": 0.5, ""class_weight"": ""balanced""}",0.6296,0.0083,0.8449
+ajuste,logistic_regression,lemma,adjusted,1-2,"{""C"": 1.0, ""class_weight"": ""balanced""}",0.6272,0.0084,0.8471
+ajuste,logistic_regression,lemma,adjusted,1-2,"{""C"": 2.0, ""class_weight"": ""balanced""}",0.6264,0.0065,0.8514
+ajuste,logistic_regression,lemma,adjusted,1-2,"{""C"": 0.5, ""class_weight"": ""balanced""}",0.6255,0.0074,0.8404
 ajuste,logistic_regression,stem,adjusted,1-1,"{""C"": 1.0, ""class_weight"": ""balanced""}",0.6212,0.0087,0.8351
+ajuste,logistic_regression,lemma,adjusted,1-2,"{""C"": 5.0, ""class_weight"": ""balanced""}",0.621,0.0087,0.8544
+ajuste,logistic_regression,lemma,adjusted,1-1,"{""C"": 1.0, ""class_weight"": ""balanced""}",0.6208,0.0033,0.8363
 ajuste,logistic_regression,stem,adjusted,1-1,"{""C"": 2.0, ""class_weight"": ""balanced""}",0.619,0.0094,0.8356
+ajuste,logistic_regression,lemma,adjusted,1-1,"{""C"": 2.0, ""class_weight"": ""balanced""}",0.6187,0.0056,0.8399
 ajuste,logistic_regression,stem,adjusted,1-1,"{""C"": 0.5, ""class_weight"": ""balanced""}",0.6178,0.0083,0.8319
 ajuste,logistic_regression,stem,adjusted,1-1,"{""C"": 5.0, ""class_weight"": ""balanced""}",0.6157,0.0066,0.8355
+ajuste,logistic_regression,lemma,adjusted,1-1,"{""C"": 0.5, ""class_weight"": ""balanced""}",0.615,0.0039,0.8295
+ajuste,logistic_regression,stem,spacy_full,1-2,"{""C"": 0.5, ""class_weight"": ""balanced""}",0.6129,0.0082,0.8405
+ajuste,logistic_regression,stem,spacy_full,1-2,"{""C"": 1.0, ""class_weight"": ""balanced""}",0.6123,0.0056,0.8426
+ajuste,logistic_regression,stem,spacy_full,1-2,"{""C"": 2.0, ""class_weight"": ""balanced""}",0.6115,0.007,0.8451
+ajuste,logistic_regression,lemma,spacy_full,1-2,"{""C"": 1.0, ""class_weight"": ""balanced""}",0.6107,0.0059,0.8433
+ajuste,logistic_regression,lemma,spacy_full,1-2,"{""C"": 0.5, ""class_weight"": ""balanced""}",0.6101,0.0074,0.8384
+ajuste,logistic_regression,lemma,adjusted,1-1,"{""C"": 5.0, ""class_weight"": ""balanced""}",0.6096,0.0081,0.8392
+ajuste,logistic_regression,stem,spacy_full,1-2,"{""C"": 5.0, ""class_weight"": ""balanced""}",0.6086,0.005,0.8466
+ajuste,logistic_regression,lemma,spacy_full,1-1,"{""C"": 0.5, ""class_weight"": ""balanced""}",0.6072,0.0057,0.8311
+ajuste,logistic_regression,lemma,spacy_full,1-1,"{""C"": 1.0, ""class_weight"": ""balanced""}",0.6065,0.0047,0.8357
+ajuste,logistic_regression,lemma,spacy_full,1-1,"{""C"": 2.0, ""class_weight"": ""balanced""}",0.6054,0.0054,0.8375
+ajuste,logistic_regression,stem,spacy_full,1-1,"{""C"": 1.0, ""class_weight"": ""balanced""}",0.6053,0.0047,0.8317
 ajuste,logistic_regression,stem,adjusted,1-1,"{""C"": 5.0, ""class_weight"": null}",0.6047,0.009,0.866
+ajuste,logistic_regression,lemma,spacy_full,1-2,"{""C"": 2.0, ""class_weight"": ""balanced""}",0.6047,0.003,0.8449
+ajuste,logistic_regression,stem,spacy_full,1-1,"{""C"": 0.5, ""class_weight"": ""balanced""}",0.6044,0.0069,0.8304
+ajuste,logistic_regression,lemma,spacy_full,1-2,"{""C"": 5.0, ""class_weight"": ""balanced""}",0.6038,0.0054,0.8467
+ajuste,logistic_regression,stem,spacy_full,1-1,"{""C"": 2.0, ""class_weight"": ""balanced""}",0.6031,0.003,0.8309
+ajuste,logistic_regression,stem,adjusted,1-2,"{""C"": 5.0, ""class_weight"": null}",0.5989,0.007,0.8683
+ajuste,logistic_regression,lemma,spacy_full,1-1,"{""C"": 5.0, ""class_weight"": ""balanced""}",0.5975,0.0087,0.8367
+ajuste,logistic_regression,stem,spacy_full,1-1,"{""C"": 5.0, ""class_weight"": ""balanced""}",0.5949,0.006,0.8299
 ajuste,logistic_regression,stem,adjusted,1-1,"{""C"": 2.0, ""class_weight"": null}",0.5898,0.0061,0.8684
-ajuste,logistic_regression,stem,adjusted,1-1,"{""C"": 1.0, ""class_weight"": null}",0.5711,0.0054,0.8664
+ajuste,logistic_regression,lemma,adjusted,1-1,"{""C"": 5.0, ""class_weight"": null}",0.5883,0.0101,0.8647
+ajuste,logistic_regression,stem,spacy_full,1-2,"{""C"": 5.0, ""class_weight"": null}",0.5835,0.0103,0.8646
+ajuste,logistic_regression,stem,adjusted,1-2,"{""C"": 2.0, ""class_weight"": null}",0.5797,0.0073,0.8686
+ajuste,logistic_regression,stem,spacy_full,1-1,"{""C"": 5.0, ""class_weight"": null}",0.5794,0.0102,0.8616
+ajuste,logistic_regression,lemma,adjusted,1-2,"{""C"": 5.0, ""class_weight"": null}",0.5762,0.0077,0.8653
+ajuste,logistic_regression,lemma,adjusted,1-1,"{""C"": 2.0, ""class_weight"": null}",0.5755,0.0086,0.865
+ajuste,logistic_regression,lemma,spacy_full,1-1,"{""C"": 5.0, ""class_weight"": null}",0.5733,0.007,0.8624
 cribado,logistic_regression,stem,adjusted,1-1,{},0.5711,0.0054,0.8664
+ajuste,logistic_regression,lemma,spacy_full,1-2,"{""C"": 5.0, ""class_weight"": null}",0.5702,0.003,0.8632
+ajuste,logistic_regression,stem,spacy_full,1-2,"{""C"": 2.0, ""class_weight"": null}",0.5661,0.0094,0.8659
+ajuste,logistic_regression,stem,spacy_full,1-1,"{""C"": 2.0, ""class_weight"": null}",0.5657,0.0095,0.8644
 ajuste,complement_nb,stem,adjusted,1-2,"{""alpha"": 0.5, ""norm"": false}",0.5625,0.0071,0.8413
+ajuste,logistic_regression,lemma,adjusted,1-2,"{""C"": 2.0, ""class_weight"": null}",0.5624,0.0084,0.8639
 cribado,logistic_regression,stem,adjusted,1-2,{},0.5595,0.0059,0.8643
+ajuste,logistic_regression,lemma,spacy_full,1-1,"{""C"": 2.0, ""class_weight"": null}",0.559,0.0062,0.8637
+ajuste,logistic_regression,lemma,spacy_full,1-2,"{""C"": 2.0, ""class_weight"": null}",0.5556,0.0046,0.8628
 ajuste,complement_nb,stem,adjusted,1-2,"{""alpha"": 0.1, ""norm"": false}",0.5542,0.0087,0.8215
+ajuste,complement_nb,stem,spacy_full,1-2,"{""alpha"": 0.5, ""norm"": false}",0.5529,0.014,0.8396
 ajuste,logistic_regression,stem,adjusted,1-1,"{""C"": 0.5, ""class_weight"": null}",0.5521,0.0036,0.8606
 cribado,logistic_regression,stem,spacy_full,1-1,{},0.5521,0.0047,0.862
+ajuste,complement_nb,lemma,adjusted,1-2,"{""alpha"": 0.5, ""norm"": false}",0.5512,0.0041,0.8366
 cribado,logistic_regression,lemma,adjusted,1-1,{},0.5511,0.003,0.862
 cribado,logistic_regression,stem,spacy_full,1-2,{},0.5506,0.0046,0.8624
-ajuste,complement_nb,stem,adjusted,1-2,"{""alpha"": 1.0, ""norm"": false}",0.5478,0.0083,0.8497
+ajuste,complement_nb,lemma,adjusted,1-2,"{""alpha"": 0.5, ""norm"": true}",0.548,0.0069,0.8506
 cribado,complement_nb,stem,adjusted,1-2,{},0.5478,0.0083,0.8497
 cribado,logistic_regression,lemma,spacy_full,1-1,{},0.5469,0.0041,0.8591
 ajuste,complement_nb,stem,adjusted,1-2,"{""alpha"": 0.5, ""norm"": true}",0.5462,0.0066,0.8521
 cribado,complement_nb,lemma,adjusted,1-2,{},0.5458,0.0044,0.8459
 cribado,logistic_regression,lemma,spacy_full,1-2,{},0.5446,0.0061,0.8591
+ajuste,complement_nb,lemma,spacy_full,1-2,"{""alpha"": 0.5, ""norm"": false}",0.544,0.0067,0.8319
 cribado,logistic_regression,lemma,adjusted,1-2,{},0.5436,0.0044,0.8592
+ajuste,complement_nb,lemma,adjusted,1-2,"{""alpha"": 0.1, ""norm"": false}",0.5435,0.0095,0.8176
 cribado,complement_nb,lemma,spacy_full,1-2,{},0.5425,0.0047,0.8442
+ajuste,complement_nb,lemma,spacy_full,1-2,"{""alpha"": 0.5, ""norm"": true}",0.5393,0.0065,0.8456
+ajuste,logistic_regression,stem,adjusted,1-2,"{""C"": 0.5, ""class_weight"": null}",0.5386,0.006,0.858
+ajuste,logistic_regression,stem,spacy_full,1-1,"{""C"": 0.5, ""class_weight"": null}",0.5384,0.0019,0.8566
+ajuste,complement_nb,stem,spacy_full,1-2,"{""alpha"": 0.1, ""norm"": false}",0.5379,0.0132,0.8134
 cribado,complement_nb,stem,spacy_full,1-2,{},0.5369,0.0044,0.8453
+ajuste,logistic_regression,stem,spacy_full,1-2,"{""C"": 0.5, ""class_weight"": null}",0.5361,0.0065,0.8564
+ajuste,complement_nb,lemma,spacy_full,1-2,"{""alpha"": 0.1, ""norm"": false}",0.5359,0.008,0.8113
+ajuste,complement_nb,stem,spacy_full,1-2,"{""alpha"": 0.5, ""norm"": true}",0.5351,0.0054,0.8479
+ajuste,complement_nb,lemma,spacy_full,1-1,"{""alpha"": 0.5, ""norm"": true}",0.5328,0.007,0.838
 cribado,complement_nb,lemma,spacy_full,1-1,{},0.5327,0.0059,0.8222
 cribado,complement_nb,lemma,adjusted,1-1,{},0.5321,0.0054,0.8246
+ajuste,complement_nb,lemma,spacy_full,1-1,"{""alpha"": 0.5, ""norm"": false}",0.5314,0.0069,0.8135
+ajuste,complement_nb,stem,adjusted,1-1,"{""alpha"": 0.5, ""norm"": false}",0.5313,0.0108,0.8101
+ajuste,complement_nb,lemma,adjusted,1-1,"{""alpha"": 0.5, ""norm"": true}",0.5311,0.0064,0.8409
+ajuste,complement_nb,lemma,adjusted,1-1,"{""alpha"": 0.5, ""norm"": false}",0.5309,0.0068,0.8154
+ajuste,logistic_regression,lemma,adjusted,1-1,"{""C"": 0.5, ""class_weight"": null}",0.5303,0.007,0.8535
 cribado,complement_nb,stem,adjusted,1-1,{},0.5295,0.0061,0.8182
+ajuste,complement_nb,stem,spacy_full,1-1,"{""alpha"": 0.5, ""norm"": false}",0.5287,0.0092,0.8064
+ajuste,complement_nb,stem,spacy_full,1-1,"{""alpha"": 0.5, ""norm"": true}",0.5286,0.0095,0.8358
 cribado,complement_nb,stem,spacy_full,1-1,{},0.5281,0.0052,0.8157
+ajuste,complement_nb,stem,adjusted,1-1,"{""alpha"": 0.1, ""norm"": false}",0.5277,0.0132,0.8022
+ajuste,complement_nb,stem,adjusted,1-1,"{""alpha"": 0.5, ""norm"": true}",0.5273,0.006,0.8397
+ajuste,logistic_regression,lemma,spacy_full,1-1,"{""C"": 0.5, ""class_weight"": null}",0.5253,0.0051,0.8514
+ajuste,complement_nb,lemma,adjusted,1-1,"{""alpha"": 0.1, ""norm"": false}",0.5248,0.0046,0.8023
+ajuste,complement_nb,stem,spacy_full,1-1,"{""alpha"": 0.1, ""norm"": false}",0.5226,0.0123,0.7984
+ajuste,complement_nb,lemma,spacy_full,1-1,"{""alpha"": 0.1, ""norm"": false}",0.5219,0.0037,0.8003
+ajuste,logistic_regression,lemma,spacy_full,1-2,"{""C"": 0.5, ""class_weight"": null}",0.5214,0.0072,0.8498
+ajuste,logistic_regression,lemma,adjusted,1-2,"{""C"": 0.5, ""class_weight"": null}",0.5211,0.0087,0.8495
+ajuste,complement_nb,lemma,adjusted,1-2,"{""alpha"": 1.0, ""norm"": true}",0.5148,0.0094,0.8424
+ajuste,complement_nb,lemma,spacy_full,1-2,"{""alpha"": 1.0, ""norm"": true}",0.5141,0.0069,0.8427
+ajuste,complement_nb,lemma,spacy_full,1-1,"{""alpha"": 1.0, ""norm"": true}",0.5088,0.0067,0.8385
 ajuste,complement_nb,stem,adjusted,1-2,"{""alpha"": 1.0, ""norm"": true}",0.5068,0.0073,0.8417
+ajuste,complement_nb,stem,spacy_full,1-1,"{""alpha"": 1.0, ""norm"": true}",0.5054,0.0062,0.838
+ajuste,complement_nb,stem,spacy_full,1-2,"{""alpha"": 1.0, ""norm"": true}",0.5006,0.0077,0.8386
+ajuste,complement_nb,lemma,adjusted,1-1,"{""alpha"": 1.0, ""norm"": true}",0.4962,0.0051,0.8348
+ajuste,complement_nb,stem,adjusted,1-1,"{""alpha"": 1.0, ""norm"": true}",0.4961,0.0069,0.8354
+ajuste,complement_nb,stem,spacy_full,1-2,"{""alpha"": 0.1, ""norm"": true}",0.4925,0.0085,0.7187
 ajuste,complement_nb,stem,adjusted,1-2,"{""alpha"": 0.1, ""norm"": true}",0.4839,0.0024,0.694
+ajuste,complement_nb,lemma,spacy_full,1-2,"{""alpha"": 0.1, ""norm"": true}",0.479,0.0109,0.6988
+ajuste,complement_nb,lemma,adjusted,1-2,"{""alpha"": 0.1, ""norm"": true}",0.4764,0.0036,0.687
+ajuste,complement_nb,lemma,adjusted,1-1,"{""alpha"": 0.1, ""norm"": true}",0.4668,0.0109,0.6836
+ajuste,complement_nb,lemma,spacy_full,1-1,"{""alpha"": 0.1, ""norm"": true}",0.4633,0.0095,0.6781
+ajuste,complement_nb,stem,adjusted,1-1,"{""alpha"": 0.1, ""norm"": true}",0.457,0.0073,0.6634
+ajuste,complement_nb,stem,spacy_full,1-1,"{""alpha"": 0.1, ""norm"": true}",0.454,0.0084,0.6591
 línea base,baseline,-,-,-,"{""strategy"": ""most_frequent""}",0.215,0.0,0.7541

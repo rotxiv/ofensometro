@@ -1,23 +1,16 @@
 """
 Modelos, pipeline de producción y búsqueda de la mejor configuración.
 
-La búsqueda se hace en DOS etapas en lugar de probar todas las combinaciones a la vez:
-
-  1. Cribado del preprocesamiento. Cada variante de (normalizador, stop words, n-gramas) se
-     mide con cada modelo usando sus hiperparámetros por defecto. Como todos juegan en
-     igualdad de condiciones, la tabla permite comparar una decisión contra otra
-     («¿lema o raíz?») sin que el ajuste fino distorsione la comparación.
-  2. Ajuste de hiperparámetros. Cada modelo se afina SOLO sobre su mejor variante de
-     preprocesamiento.
-
-Es una búsqueda voraz: no explora interacciones entre el preprocesamiento y los hiperparámetros,
-a cambio de evaluar mucho menos (30 validaciones cruzadas).
-Todo se evalúa con validación cruzada sobre el conjunto de entrenamiento.
+Se evalúan todas las combinaciones de preprocesamiento e hiperparámetros con validación
+cruzada sobre el conjunto de entrenamiento. El cribado registra las variantes con los
+hiperparámetros por defecto; esas mismas combinaciones se omiten en la etapa de ajuste
+para no evaluarlas dos veces.
 """
 
 from dataclasses import dataclass
 from itertools import product
 
+import numpy as np
 import pandas as pd
 from sklearn.dummy import DummyClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -39,10 +32,12 @@ STAGE_TUNING = "ajuste"
 STAGE_BASELINE = "línea base"
 
 def make_model(name: str, seed: int):
-    """ComplementNB y no el multinomial: estima cada clase con los textos de las DEMÁS, así que
-    no se hunde cuando una clase tiene ~1 % de los datos (OFG)."""
+    """
+    ComplementNB y no el multinomial: estima cada clase con los textos de las DEMÁS, 
+    así que no se hunde cuando una clase tiene ~1 % de los datos (OFG).
+    """
     factories = {
-        "complement_nb": lambda: ComplementNB(),
+        "complement_nb": ComplementNB,
         "logistic_regression": lambda: LogisticRegression(max_iter=2000, random_state=seed),
         "baseline": lambda: DummyClassifier(strategy="most_frequent"),
     }
@@ -51,7 +46,9 @@ def make_model(name: str, seed: int):
     return factories[name]()
 
 def make_vectorizer(ngram_range, tfidf: dict) -> TfidfVectorizer:
-    # El preprocesador ya bajó a minúsculas y separó las palabras: solo se divide por espacios.
+    """
+    Crea un vectorizador de scikit-learn que aplica TF-IDF a los textos preprocesados.
+    """
     return TfidfVectorizer(token_pattern=r"\S+", lowercase=False,
                            ngram_range=tuple(ngram_range), **tfidf)
 
@@ -77,6 +74,7 @@ def build_pipeline(config: dict, params: dict) -> Pipeline:
 @dataclass(frozen=True)
 class Variant:
     """Una forma concreta de preprocesar: se calcula una vez y se reutiliza."""
+
     normalizer: str
     stopword_list: str
     ngram_range: tuple
@@ -91,11 +89,16 @@ class Evaluator:
                                      shuffle=True, random_state=params["seed"])
 
     def score(self, prepared: list[str], ngram_range, model: str, hyperparameters: dict) -> dict:
+        """
+        Devuelve las métricas de validación cruzada para un modelo y una variante 
+        de preprocesamiento.
+        """
+        prepared_array = np.asarray(prepared, dtype=object)
         pipeline = Pipeline([
             ("tfidf", make_vectorizer(ngram_range, self.params["tfidf"])),
             ("model", make_model(model, self.params["seed"]).set_params(**hyperparameters)),
         ])
-        result = cross_validate(pipeline, prepared, self.y, cv=self.folds, n_jobs=-1,
+        result = cross_validate(pipeline, prepared_array, self.y, cv=self.folds, n_jobs=-1,
                                 scoring={"f1": "f1_macro", "acc": "accuracy"})
         return {
             "cv_f1_macro": round(float(result["test_f1"].mean()), 4),
@@ -116,11 +119,15 @@ def _row(stage: str, model: str, variant: Variant | None, hyperparameters: dict,
     }
 
 def run_experiments(texts: pd.Series, y: pd.Series, params: dict) -> pd.DataFrame:
+    """
+    Ejecuta la busqueda de la mejor configuración y devuelve una tabla con los resultados
+    de cada variante.
+    """
     exp = params["experiments"]
     evaluator = Evaluator(y, params)
     families = list(exp["models"])
 
-    # Etapa 1: cada preprocesamiento se calcula una sola vez y se prueba con cada modelo.
+    # Cada preprocesamiento se calcula una sola vez y se reutiliza en todas las combinaciones.
     prepared_by_pair = {}
     for normalizer, stopword_list in product(exp["normalizers"], exp["stopword_lists"]):
         print(f"  preprocesamiento {normalizer} + {stopword_list}")
@@ -128,27 +135,24 @@ def run_experiments(texts: pd.Series, y: pd.Series, params: dict) -> pd.DataFram
             make_preprocessor(normalizer, stopword_list, params["nlp"]).transform(texts)
 
     rows = []
-    variants_of = {}
     for (normalizer, stopword_list), prepared in prepared_by_pair.items():
         for ngram_range in exp["ngram_ranges"]:
             variant = Variant(normalizer, stopword_list, tuple(ngram_range))
             for model in families:
+                # El cribado es la combinación por defecto de cada variante y modelo.
                 scores = evaluator.score(prepared, variant.ngram_range, model, {})
                 rows.append(_row(STAGE_SCREENING, model, variant, {}, scores))
-                variants_of[(model, variant)] = scores["cv_f1_macro"]
+                defaults = make_model(model, params["seed"]).get_params()
+                for hyperparameters in ParameterGrid(exp["models"][model]):
+                    if all(defaults.get(name) == value
+                           for name, value in hyperparameters.items()):
+                        continue
+                    scores = evaluator.score(prepared, variant.ngram_range, model, hyperparameters)
+                    rows.append(_row(STAGE_TUNING, model, variant, hyperparameters, scores))
 
-    # Etapa 2: cada modelo se afina sobre SU mejor variante.
-    for model in families:
-        best = max((v for (m, v) in variants_of if m == model),
-                   key=lambda v: variants_of[(model, v)])
-        print(f"  ajuste de {model} sobre {best.normalizer}/{best.stopword_list}/{best.ngram_range}")
-        prepared = prepared_by_pair[(best.normalizer, best.stopword_list)]
-        for hyperparameters in ParameterGrid(exp["models"][model]):
-            scores = evaluator.score(prepared, best.ngram_range, model, hyperparameters)
-            rows.append(_row(STAGE_TUNING, model, best, hyperparameters, scores))
-
-    baseline = cross_validate(make_model("baseline", params["seed"]), texts, y,
-                              cv=evaluator.folds, scoring=["f1_macro", "accuracy"])
+    baseline = cross_validate(make_model("baseline", params["seed"]),
+                              texts.astype(str).to_numpy(), y, cv=evaluator.folds,
+                              scoring=["f1_macro", "accuracy"])
     rows.append(_row(STAGE_BASELINE, "baseline", None, {"strategy": "most_frequent"}, {
         "cv_f1_macro": round(float(baseline["test_f1_macro"].mean()), 4),
         "cv_f1_macro_std": round(float(baseline["test_f1_macro"].std()), 4),
@@ -160,6 +164,10 @@ def run_experiments(texts: pd.Series, y: pd.Series, params: dict) -> pd.DataFram
             .reset_index(drop=True))
 
 def row_to_config(row: pd.Series) -> dict:
+    """"
+    Convierte una fila de la tabla de resultados en un diccionario que se puede pasar 
+    a build_pipeline().
+    """
     return {
         "model": row["model"],
         "normalizer": row["normalizer"],

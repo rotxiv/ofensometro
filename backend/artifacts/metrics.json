@@ -1,6 +1,6 @@
 {
-  "version": "20261102-150603",
-  "trained_at": "2026-11-02T15:06:03+00:00",
+  "version": "20261110-153830",
+  "trained_at": "2026-11-10T15:38:30+00:00",
   "seed": 42,
   "labels": {
     "NO": {
@@ -852,14 +852,14 @@
       "stopword_list": "adjusted",
       "ngram_range": [
         1,
-        1
+        2
       ],
       "hyperparameters": {
         "C": 1.0,
         "class_weight": "balanced"
       }
     },
-    "cv_f1_macro": 0.6212
+    "cv_f1_macro": 0.6344
   },
   "models": [
     {
@@ -967,89 +967,89 @@
         "stopword_list": "adjusted",
         "ngram_range": [
           1,
-          1
+          2
         ],
         "hyperparameters": {
           "C": 1.0,
           "class_weight": "balanced"
         }
       },
-      "cv_f1_macro": 0.6212,
-      "cv_f1_macro_std": 0.0087,
+      "cv_f1_macro": 0.6344,
+      "cv_f1_macro_std": 0.0103,
       "test": {
-        "accuracy": 0.8413,
-        "f1_macro": 0.6355,
+        "accuracy": 0.8546,
+        "f1_macro": 0.6546,
         "per_class": {
           "NO": {
-            "precision": 0.9476,
-            "recall": 0.8872,
-            "f1": 0.9164,
+            "precision": 0.9453,
+            "recall": 0.9043,
+            "f1": 0.9243,
             "support": 4585
           },
           "NOE": {
-            "precision": 0.6689,
-            "recall": 0.7524,
-            "f1": 0.7082,
+            "precision": 0.6888,
+            "recall": 0.7448,
+            "f1": 0.7157,
             "support": 529
           },
           "OFP": {
-            "precision": 0.6178,
-            "recall": 0.6935,
-            "f1": 0.6535,
+            "precision": 0.6359,
+            "recall": 0.7037,
+            "f1": 0.6681,
             "support": 881
           },
           "OFG": {
-            "precision": 0.1872,
-            "recall": 0.4471,
-            "f1": 0.2639,
+            "precision": 0.2449,
+            "recall": 0.4235,
+            "f1": 0.3103,
             "support": 85
           }
         },
         "confusion_matrix": [
           [
-            4068,
-            113,
-            300,
-            104
+            4146,
+            97,
+            271,
+            71
           ],
           [
-            59,
-            398,
-            55,
-            17
+            62,
+            394,
+            62,
+            11
           ],
           [
-            152,
-            74,
-            611,
-            44
+            160,
+            72,
+            620,
+            29
           ],
           [
-            14,
-            10,
-            23,
-            38
+            18,
+            9,
+            22,
+            36
           ]
         ]
       },
       "test_binary": {
         "threshold": 0.5,
-        "accuracy": 0.8806,
-        "f1_macro": 0.7947,
+        "accuracy": 0.8883,
+        "f1_macro": 0.8015,
         "offensive": {
-          "precision": 0.6015,
-          "recall": 0.736,
-          "f1": 0.662
+          "precision": 0.6313,
+          "recall": 0.7143,
+          "f1": 0.6702
         },
-        "roc_auc": 0.9051,
+        "roc_auc": 0.9119,
         "confusion_matrix": [
           [
-            4643,
-            471
+            4711,
+            403
           ],
           [
-            255,
-            711
+            276,
+            690
           ]
         ]
       }
@@ -1150,6 +1150,104 @@
       "model": "logistic_regression",
       "normalizer": "stem",
       "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 1.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6344,
+      "cv_f1_macro_std": 0.0103,
+      "cv_accuracy": 0.8504
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6332,
+      "cv_f1_macro_std": 0.0112,
+      "cv_accuracy": 0.8539
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 5.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6299,
+      "cv_f1_macro_std": 0.0118,
+      "cv_accuracy": 0.8544
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6296,
+      "cv_f1_macro_std": 0.0083,
+      "cv_accuracy": 0.8449
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 1.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6272,
+      "cv_f1_macro_std": 0.0084,
+      "cv_accuracy": 0.8471
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6264,
+      "cv_f1_macro_std": 0.0065,
+      "cv_accuracy": 0.8514
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6255,
+      "cv_f1_macro_std": 0.0074,
+      "cv_accuracy": 0.8404
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
       "ngram_range": "1-1",
       "hyperparameters": {
         "C": 1.0,
@@ -1158,6 +1256,34 @@
       "cv_f1_macro": 0.6212,
       "cv_f1_macro_std": 0.0087,
       "cv_accuracy": 0.8351
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 5.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.621,
+      "cv_f1_macro_std": 0.0087,
+      "cv_accuracy": 0.8544
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 1.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6208,
+      "cv_f1_macro_std": 0.0033,
+      "cv_accuracy": 0.8363
     },
     {
       "stage": "ajuste",
@@ -1172,6 +1298,20 @@
       "cv_f1_macro": 0.619,
       "cv_f1_macro_std": 0.0094,
       "cv_accuracy": 0.8356
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6187,
+      "cv_f1_macro_std": 0.0056,
+      "cv_accuracy": 0.8399
     },
     {
       "stage": "ajuste",
@@ -1204,6 +1344,174 @@
     {
       "stage": "ajuste",
       "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.615,
+      "cv_f1_macro_std": 0.0039,
+      "cv_accuracy": 0.8295
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6129,
+      "cv_f1_macro_std": 0.0082,
+      "cv_accuracy": 0.8405
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 1.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6123,
+      "cv_f1_macro_std": 0.0056,
+      "cv_accuracy": 0.8426
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6115,
+      "cv_f1_macro_std": 0.007,
+      "cv_accuracy": 0.8451
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 1.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6107,
+      "cv_f1_macro_std": 0.0059,
+      "cv_accuracy": 0.8433
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6101,
+      "cv_f1_macro_std": 0.0074,
+      "cv_accuracy": 0.8384
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 5.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6096,
+      "cv_f1_macro_std": 0.0081,
+      "cv_accuracy": 0.8392
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 5.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6086,
+      "cv_f1_macro_std": 0.005,
+      "cv_accuracy": 0.8466
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6072,
+      "cv_f1_macro_std": 0.0057,
+      "cv_accuracy": 0.8311
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 1.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6065,
+      "cv_f1_macro_std": 0.0047,
+      "cv_accuracy": 0.8357
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6054,
+      "cv_f1_macro_std": 0.0054,
+      "cv_accuracy": 0.8375
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 1.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6053,
+      "cv_f1_macro_std": 0.0047,
+      "cv_accuracy": 0.8317
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
       "normalizer": "stem",
       "stopword_list": "adjusted",
       "ngram_range": "1-1",
@@ -1214,6 +1522,104 @@
       "cv_f1_macro": 0.6047,
       "cv_f1_macro_std": 0.009,
       "cv_accuracy": 0.866
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6047,
+      "cv_f1_macro_std": 0.003,
+      "cv_accuracy": 0.8449
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6044,
+      "cv_f1_macro_std": 0.0069,
+      "cv_accuracy": 0.8304
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 5.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6038,
+      "cv_f1_macro_std": 0.0054,
+      "cv_accuracy": 0.8467
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.6031,
+      "cv_f1_macro_std": 0.003,
+      "cv_accuracy": 0.8309
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 5.0,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5989,
+      "cv_f1_macro_std": 0.007,
+      "cv_accuracy": 0.8683
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 5.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.5975,
+      "cv_f1_macro_std": 0.0087,
+      "cv_accuracy": 0.8367
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 5.0,
+        "class_weight": "balanced"
+      },
+      "cv_f1_macro": 0.5949,
+      "cv_f1_macro_std": 0.006,
+      "cv_accuracy": 0.8299
     },
     {
       "stage": "ajuste",
@@ -1232,16 +1638,100 @@
     {
       "stage": "ajuste",
       "model": "logistic_regression",
-      "normalizer": "stem",
+      "normalizer": "lemma",
       "stopword_list": "adjusted",
       "ngram_range": "1-1",
       "hyperparameters": {
-        "C": 1.0,
+        "C": 5.0,
         "class_weight": null
       },
-      "cv_f1_macro": 0.5711,
-      "cv_f1_macro_std": 0.0054,
-      "cv_accuracy": 0.8664
+      "cv_f1_macro": 0.5883,
+      "cv_f1_macro_std": 0.0101,
+      "cv_accuracy": 0.8647
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 5.0,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5835,
+      "cv_f1_macro_std": 0.0103,
+      "cv_accuracy": 0.8646
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5797,
+      "cv_f1_macro_std": 0.0073,
+      "cv_accuracy": 0.8686
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 5.0,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5794,
+      "cv_f1_macro_std": 0.0102,
+      "cv_accuracy": 0.8616
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 5.0,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5762,
+      "cv_f1_macro_std": 0.0077,
+      "cv_accuracy": 0.8653
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5755,
+      "cv_f1_macro_std": 0.0086,
+      "cv_accuracy": 0.865
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 5.0,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5733,
+      "cv_f1_macro_std": 0.007,
+      "cv_accuracy": 0.8624
     },
     {
       "stage": "cribado",
@@ -1253,6 +1743,48 @@
       "cv_f1_macro": 0.5711,
       "cv_f1_macro_std": 0.0054,
       "cv_accuracy": 0.8664
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 5.0,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5702,
+      "cv_f1_macro_std": 0.003,
+      "cv_accuracy": 0.8632
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5661,
+      "cv_f1_macro_std": 0.0094,
+      "cv_accuracy": 0.8659
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5657,
+      "cv_f1_macro_std": 0.0095,
+      "cv_accuracy": 0.8644
     },
     {
       "stage": "ajuste",
@@ -1269,6 +1801,20 @@
       "cv_accuracy": 0.8413
     },
     {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5624,
+      "cv_f1_macro_std": 0.0084,
+      "cv_accuracy": 0.8639
+    },
+    {
       "stage": "cribado",
       "model": "logistic_regression",
       "normalizer": "stem",
@@ -1278,6 +1824,34 @@
       "cv_f1_macro": 0.5595,
       "cv_f1_macro_std": 0.0059,
       "cv_accuracy": 0.8643
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.559,
+      "cv_f1_macro_std": 0.0062,
+      "cv_accuracy": 0.8637
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 2.0,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5556,
+      "cv_f1_macro_std": 0.0046,
+      "cv_accuracy": 0.8628
     },
     {
       "stage": "ajuste",
@@ -1292,6 +1866,20 @@
       "cv_f1_macro": 0.5542,
       "cv_f1_macro_std": 0.0087,
       "cv_accuracy": 0.8215
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": false
+      },
+      "cv_f1_macro": 0.5529,
+      "cv_f1_macro_std": 0.014,
+      "cv_accuracy": 0.8396
     },
     {
       "stage": "ajuste",
@@ -1319,6 +1907,20 @@
       "cv_accuracy": 0.862
     },
     {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": false
+      },
+      "cv_f1_macro": 0.5512,
+      "cv_f1_macro_std": 0.0041,
+      "cv_accuracy": 0.8366
+    },
+    {
       "stage": "cribado",
       "model": "logistic_regression",
       "normalizer": "lemma",
@@ -1343,16 +1945,16 @@
     {
       "stage": "ajuste",
       "model": "complement_nb",
-      "normalizer": "stem",
+      "normalizer": "lemma",
       "stopword_list": "adjusted",
       "ngram_range": "1-2",
       "hyperparameters": {
-        "alpha": 1.0,
-        "norm": false
+        "alpha": 0.5,
+        "norm": true
       },
-      "cv_f1_macro": 0.5478,
-      "cv_f1_macro_std": 0.0083,
-      "cv_accuracy": 0.8497
+      "cv_f1_macro": 0.548,
+      "cv_f1_macro_std": 0.0069,
+      "cv_accuracy": 0.8506
     },
     {
       "stage": "cribado",
@@ -1413,6 +2015,20 @@
       "cv_accuracy": 0.8591
     },
     {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": false
+      },
+      "cv_f1_macro": 0.544,
+      "cv_f1_macro_std": 0.0067,
+      "cv_accuracy": 0.8319
+    },
+    {
       "stage": "cribado",
       "model": "logistic_regression",
       "normalizer": "lemma",
@@ -1422,6 +2038,20 @@
       "cv_f1_macro": 0.5436,
       "cv_f1_macro_std": 0.0044,
       "cv_accuracy": 0.8592
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": false
+      },
+      "cv_f1_macro": 0.5435,
+      "cv_f1_macro_std": 0.0095,
+      "cv_accuracy": 0.8176
     },
     {
       "stage": "cribado",
@@ -1435,6 +2065,62 @@
       "cv_accuracy": 0.8442
     },
     {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": true
+      },
+      "cv_f1_macro": 0.5393,
+      "cv_f1_macro_std": 0.0065,
+      "cv_accuracy": 0.8456
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5386,
+      "cv_f1_macro_std": 0.006,
+      "cv_accuracy": 0.858
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5384,
+      "cv_f1_macro_std": 0.0019,
+      "cv_accuracy": 0.8566
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": false
+      },
+      "cv_f1_macro": 0.5379,
+      "cv_f1_macro_std": 0.0132,
+      "cv_accuracy": 0.8134
+    },
+    {
       "stage": "cribado",
       "model": "complement_nb",
       "normalizer": "stem",
@@ -1444,6 +2130,62 @@
       "cv_f1_macro": 0.5369,
       "cv_f1_macro_std": 0.0044,
       "cv_accuracy": 0.8453
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5361,
+      "cv_f1_macro_std": 0.0065,
+      "cv_accuracy": 0.8564
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": false
+      },
+      "cv_f1_macro": 0.5359,
+      "cv_f1_macro_std": 0.008,
+      "cv_accuracy": 0.8113
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": true
+      },
+      "cv_f1_macro": 0.5351,
+      "cv_f1_macro_std": 0.0054,
+      "cv_accuracy": 0.8479
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": true
+      },
+      "cv_f1_macro": 0.5328,
+      "cv_f1_macro_std": 0.007,
+      "cv_accuracy": 0.838
     },
     {
       "stage": "cribado",
@@ -1468,6 +2210,76 @@
       "cv_accuracy": 0.8246
     },
     {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": false
+      },
+      "cv_f1_macro": 0.5314,
+      "cv_f1_macro_std": 0.0069,
+      "cv_accuracy": 0.8135
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": false
+      },
+      "cv_f1_macro": 0.5313,
+      "cv_f1_macro_std": 0.0108,
+      "cv_accuracy": 0.8101
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": true
+      },
+      "cv_f1_macro": 0.5311,
+      "cv_f1_macro_std": 0.0064,
+      "cv_accuracy": 0.8409
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": false
+      },
+      "cv_f1_macro": 0.5309,
+      "cv_f1_macro_std": 0.0068,
+      "cv_accuracy": 0.8154
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5303,
+      "cv_f1_macro_std": 0.007,
+      "cv_accuracy": 0.8535
+    },
+    {
       "stage": "cribado",
       "model": "complement_nb",
       "normalizer": "stem",
@@ -1479,6 +2291,34 @@
       "cv_accuracy": 0.8182
     },
     {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": false
+      },
+      "cv_f1_macro": 0.5287,
+      "cv_f1_macro_std": 0.0092,
+      "cv_accuracy": 0.8064
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": true
+      },
+      "cv_f1_macro": 0.5286,
+      "cv_f1_macro_std": 0.0095,
+      "cv_accuracy": 0.8358
+    },
+    {
       "stage": "cribado",
       "model": "complement_nb",
       "normalizer": "stem",
@@ -1488,6 +2328,160 @@
       "cv_f1_macro": 0.5281,
       "cv_f1_macro_std": 0.0052,
       "cv_accuracy": 0.8157
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": false
+      },
+      "cv_f1_macro": 0.5277,
+      "cv_f1_macro_std": 0.0132,
+      "cv_accuracy": 0.8022
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.5,
+        "norm": true
+      },
+      "cv_f1_macro": 0.5273,
+      "cv_f1_macro_std": 0.006,
+      "cv_accuracy": 0.8397
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5253,
+      "cv_f1_macro_std": 0.0051,
+      "cv_accuracy": 0.8514
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": false
+      },
+      "cv_f1_macro": 0.5248,
+      "cv_f1_macro_std": 0.0046,
+      "cv_accuracy": 0.8023
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": false
+      },
+      "cv_f1_macro": 0.5226,
+      "cv_f1_macro_std": 0.0123,
+      "cv_accuracy": 0.7984
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": false
+      },
+      "cv_f1_macro": 0.5219,
+      "cv_f1_macro_std": 0.0037,
+      "cv_accuracy": 0.8003
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5214,
+      "cv_f1_macro_std": 0.0072,
+      "cv_accuracy": 0.8498
+    },
+    {
+      "stage": "ajuste",
+      "model": "logistic_regression",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "C": 0.5,
+        "class_weight": null
+      },
+      "cv_f1_macro": 0.5211,
+      "cv_f1_macro_std": 0.0087,
+      "cv_accuracy": 0.8495
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 1.0,
+        "norm": true
+      },
+      "cv_f1_macro": 0.5148,
+      "cv_f1_macro_std": 0.0094,
+      "cv_accuracy": 0.8424
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 1.0,
+        "norm": true
+      },
+      "cv_f1_macro": 0.5141,
+      "cv_f1_macro_std": 0.0069,
+      "cv_accuracy": 0.8427
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 1.0,
+        "norm": true
+      },
+      "cv_f1_macro": 0.5088,
+      "cv_f1_macro_std": 0.0067,
+      "cv_accuracy": 0.8385
     },
     {
       "stage": "ajuste",
@@ -1507,6 +2501,76 @@
       "stage": "ajuste",
       "model": "complement_nb",
       "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 1.0,
+        "norm": true
+      },
+      "cv_f1_macro": 0.5054,
+      "cv_f1_macro_std": 0.0062,
+      "cv_accuracy": 0.838
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 1.0,
+        "norm": true
+      },
+      "cv_f1_macro": 0.5006,
+      "cv_f1_macro_std": 0.0077,
+      "cv_accuracy": 0.8386
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 1.0,
+        "norm": true
+      },
+      "cv_f1_macro": 0.4962,
+      "cv_f1_macro_std": 0.0051,
+      "cv_accuracy": 0.8348
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 1.0,
+        "norm": true
+      },
+      "cv_f1_macro": 0.4961,
+      "cv_f1_macro_std": 0.0069,
+      "cv_accuracy": 0.8354
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": true
+      },
+      "cv_f1_macro": 0.4925,
+      "cv_f1_macro_std": 0.0085,
+      "cv_accuracy": 0.7187
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
       "stopword_list": "adjusted",
       "ngram_range": "1-2",
       "hyperparameters": {
@@ -1516,6 +2580,90 @@
       "cv_f1_macro": 0.4839,
       "cv_f1_macro_std": 0.0024,
       "cv_accuracy": 0.694
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": true
+      },
+      "cv_f1_macro": 0.479,
+      "cv_f1_macro_std": 0.0109,
+      "cv_accuracy": 0.6988
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-2",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": true
+      },
+      "cv_f1_macro": 0.4764,
+      "cv_f1_macro_std": 0.0036,
+      "cv_accuracy": 0.687
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": true
+      },
+      "cv_f1_macro": 0.4668,
+      "cv_f1_macro_std": 0.0109,
+      "cv_accuracy": 0.6836
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "lemma",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": true
+      },
+      "cv_f1_macro": 0.4633,
+      "cv_f1_macro_std": 0.0095,
+      "cv_accuracy": 0.6781
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "adjusted",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": true
+      },
+      "cv_f1_macro": 0.457,
+      "cv_f1_macro_std": 0.0073,
+      "cv_accuracy": 0.6634
+    },
+    {
+      "stage": "ajuste",
+      "model": "complement_nb",
+      "normalizer": "stem",
+      "stopword_list": "spacy_full",
+      "ngram_range": "1-1",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "norm": true
+      },
+      "cv_f1_macro": 0.454,
+      "cv_f1_macro_std": 0.0084,
+      "cv_accuracy": 0.6591
     },
     {
       "stage": "línea base",
@@ -1555,32 +2703,32 @@
     "max_df": 0.9,
     "sublinear_tf": true
   },
-  "vocabulary_size": 9842,
+  "vocabulary_size": 20000,
   "accuracy_by_phenomenon": [
-    {
-      "fenomeno": "ofuscación (p3ndejo)",
-      "n": 39,
-      "accuracy": 0.7692
-    },
     {
       "fenomeno": "mayúsculas (gritos)",
       "n": 111,
-      "accuracy": 0.7928
+      "accuracy": 0.7748
     },
     {
       "fenomeno": "texto muy corto (<5 palabras)",
       "n": 298,
-      "accuracy": 0.802
+      "accuracy": 0.7919
+    },
+    {
+      "fenomeno": "ofuscación (p3ndejo)",
+      "n": 39,
+      "accuracy": 0.8205
     },
     {
       "fenomeno": "ninguno de los anteriores",
       "n": 1612,
-      "accuracy": 0.822
+      "accuracy": 0.8337
     },
     {
       "fenomeno": "negación",
       "n": 2778,
-      "accuracy": 0.8398
+      "accuracy": 0.8578
     },
     {
       "fenomeno": "risas",
@@ -1590,29 +2738,29 @@
     {
       "fenomeno": "texto largo (≥30 palabras)",
       "n": 2227,
-      "accuracy": 0.8612
+      "accuracy": 0.8788
     },
     {
       "fenomeno": "emojis",
       "n": 1273,
-      "accuracy": 0.8971
+      "accuracy": 0.9089
     }
   ],
   "accuracy_by_platform": [
-    {
-      "plataforma": "youtube",
-      "n": 4488,
-      "accuracy": 0.8347
-    },
     {
       "plataforma": "twitter",
       "n": 394,
       "accuracy": 0.8477
     },
     {
+      "plataforma": "youtube",
+      "n": 4488,
+      "accuracy": 0.8489
+    },
+    {
       "plataforma": "instagram",
       "n": 1198,
-      "accuracy": 0.8639
+      "accuracy": 0.8781
     }
   ],
   "error_examples": [
@@ -1633,23 +2781,11 @@
       "texto": "Hijos de puta lleváis una jodida semana anunciándolo...me caguen vuestra puta madre quiero ver esos 3 jodidos vídeos coño!!!",
       "real": "OFP",
       "predicho": "NOE",
-      "probabilidad": 0.9991,
-      "prob_ofensivo": 0.0009,
+      "probabilidad": 0.9969,
+      "prob_ofensivo": 0.003,
       "plataforma": "instagram",
       "fenomenos": [
         "ninguno de los anteriores"
-      ]
-    },
-    {
-      "id": "train-58395",
-      "texto": "No eres gordo no cuenta",
-      "real": "NO",
-      "predicho": "OFP",
-      "probabilidad": 0.9984,
-      "prob_ofensivo": 0.999,
-      "plataforma": "instagram",
-      "fenomenos": [
-        "negación"
       ]
     },
     {
@@ -1657,8 +2793,8 @@
       "texto": "*_ZELLEN PUTO AMO._*",
       "real": "NO",
       "predicho": "NOE",
-      "probabilidad": 0.996,
-      "prob_ofensivo": 0.0039,
+      "probabilidad": 0.9968,
+      "prob_ofensivo": 0.0031,
       "plataforma": "youtube",
       "fenomenos": [
         "mayúsculas (gritos)",
@@ -1670,8 +2806,8 @@
       "texto": "PUTO",
       "real": "OFP",
       "predicho": "NOE",
-      "probabilidad": 0.9944,
-      "prob_ofensivo": 0.0056,
+      "probabilidad": 0.9923,
+      "prob_ofensivo": 0.0077,
       "plataforma": "instagram",
       "fenomenos": [
         "texto muy corto (<5 palabras)"
@@ -1682,47 +2818,11 @@
       "texto": "Putos delinquentes",
       "real": "OFG",
       "predicho": "NOE",
-      "probabilidad": 0.9944,
-      "prob_ofensivo": 0.0056,
+      "probabilidad": 0.9923,
+      "prob_ofensivo": 0.0077,
       "plataforma": "youtube",
       "fenomenos": [
         "texto muy corto (<5 palabras)"
-      ]
-    },
-    {
-      "id": "train-26385",
-      "texto": "3:35 el puto mejor HAHAHA",
-      "real": "NO",
-      "predicho": "NOE",
-      "probabilidad": 0.9914,
-      "prob_ofensivo": 0.0086,
-      "plataforma": "youtube",
-      "fenomenos": [
-        "risas"
-      ]
-    },
-    {
-      "id": "train-8536",
-      "texto": "Me gustó tu vídeo. Una cagada las cosas que hace windy es una mala persona e hipócrita.",
-      "real": "NOE",
-      "predicho": "OFP",
-      "probabilidad": 0.9847,
-      "prob_ofensivo": 0.9865,
-      "plataforma": "youtube",
-      "fenomenos": [
-        "ninguno de los anteriores"
-      ]
-    },
-    {
-      "id": "test-55210",
-      "texto": "La gente es mala miare lo único que sabe hacer la gente es criticar por todo pero esa gente no se ven a ello mismo Cómo son",
-      "real": "NO",
-      "predicho": "OFG",
-      "probabilidad": 0.9791,
-      "prob_ofensivo": 0.9807,
-      "plataforma": "instagram",
-      "fenomenos": [
-        "negación"
       ]
     },
     {
@@ -1730,8 +2830,8 @@
       "texto": "Que te ha pasado en el dedo gordo?????😯",
       "real": "NO",
       "predicho": "OFP",
-      "probabilidad": 0.9768,
-      "prob_ofensivo": 0.9858,
+      "probabilidad": 0.9859,
+      "prob_ofensivo": 0.9896,
       "plataforma": "youtube",
       "fenomenos": [
         "emojis"
@@ -1742,23 +2842,71 @@
       "texto": "Ser payaso es malo?",
       "real": "NO",
       "predicho": "OFP",
-      "probabilidad": 0.9757,
-      "prob_ofensivo": 0.9986,
+      "probabilidad": 0.9776,
+      "prob_ofensivo": 0.9985,
       "plataforma": "twitter",
       "fenomenos": [
         "texto muy corto (<5 palabras)"
       ]
     },
     {
-      "id": "test-23015",
-      "texto": "que coño dice esta tia?",
+      "id": "train-8684",
+      "texto": "Porque nos hacemos pendejos tu no te das a respetar Andie tiene mucha personalidad al igual que muchas strimers",
+      "real": "NO",
+      "predicho": "OFP",
+      "probabilidad": 0.9758,
+      "prob_ofensivo": 0.9779,
+      "plataforma": "youtube",
+      "fenomenos": [
+        "negación"
+      ]
+    },
+    {
+      "id": "test-21637",
+      "texto": "esto es mierda",
       "real": "OFP",
       "predicho": "NOE",
-      "probabilidad": 0.974,
-      "prob_ofensivo": 0.0255,
+      "probabilidad": 0.9727,
+      "prob_ofensivo": 0.0273,
+      "plataforma": "youtube",
+      "fenomenos": [
+        "texto muy corto (<5 palabras)"
+      ]
+    },
+    {
+      "id": "train-23894",
+      "texto": "no jodas...aqui mil euros es mucho para um doctor y con eso se hace una vida de puta madre",
+      "real": "NO",
+      "predicho": "NOE",
+      "probabilidad": 0.9727,
+      "prob_ofensivo": 0.0262,
+      "plataforma": "youtube",
+      "fenomenos": [
+        "negación"
+      ]
+    },
+    {
+      "id": "train-8536",
+      "texto": "Me gustó tu vídeo. Una cagada las cosas que hace windy es una mala persona e hipócrita.",
+      "real": "NOE",
+      "predicho": "OFP",
+      "probabilidad": 0.9695,
+      "prob_ofensivo": 0.9734,
       "plataforma": "youtube",
       "fenomenos": [
         "ninguno de los anteriores"
+      ]
+    },
+    {
+      "id": "train-11521",
+      "texto": "Qué hipócritas ,payasos y sin razón .Enfin inútiles",
+      "real": "OFG",
+      "predicho": "OFP",
+      "probabilidad": 0.959,
+      "prob_ofensivo": 0.9927,
+      "plataforma": "youtube",
+      "fenomenos": [
+        "negación"
       ]
     }
   ],
@@ -1766,201 +2914,201 @@
     "NO": [
       [
         "encant",
-        2.437
+        2.674
       ],
       [
         "xxemojipositivo",
-        1.979
-      ],
-      [
-        "tem",
-        1.858
+        2.439
       ],
       [
         "hermos",
-        1.815
+        1.889
       ],
       [
-        "ayud",
-        1.517
+        "tem",
+        1.78
       ],
       [
         "no",
-        1.508
+        1.632
       ],
       [
         "mon",
-        1.488
-      ],
-      [
-        "recuerd",
-        1.438
-      ],
-      [
-        "entrev",
-        1.406
+        1.561
       ],
       [
         "bes",
-        1.4
+        1.517
       ],
       [
-        "pat",
-        1.385
+        "ayud",
+        1.494
+      ],
+      [
+        "recuerd",
+        1.444
+      ],
+      [
+        "graci",
+        1.373
+      ],
+      [
+        "vide",
+        1.358
       ],
       [
         "opinion",
-        1.371
+        1.314
       ]
     ],
     "NOE": [
       [
         "put",
-        7.745
+        8.149
       ],
       [
         "coñ",
-        7.597
+        7.831
       ],
       [
         "mierd",
-        5.794
+        6.703
       ],
       [
         "jod",
-        4.676
+        4.864
       ],
       [
         "verg",
-        4.394
+        4.714
       ],
       [
         "poll",
-        3.996
+        3.859
       ],
       [
         "cac",
-        3.188
-      ],
-      [
-        "amo",
-        2.97
-      ],
-      [
-        "ching",
-        2.956
-      ],
-      [
-        "ped",
-        2.729
+        3.714
       ],
       [
         "cabron",
-        2.683
+        2.852
+      ],
+      [
+        "ching",
+        2.79
+      ],
+      [
+        "ped",
+        2.743
+      ],
+      [
+        "mam",
+        2.708
       ],
       [
         "cag",
-        2.609
+        2.617
       ]
     ],
     "OFG": [
       [
         "gent",
-        6.683
+        6.792
       ],
       [
         "son",
-        5.324
-      ],
-      [
-        "feminazis",
-        4.704
+        6.51
       ],
       [
         "retras",
-        4.459
-      ],
-      [
-        "gilipoll",
-        4.026
-      ],
-      [
-        "esas",
-        3.718
-      ],
-      [
-        "simi",
-        3.71
+        4.51
       ],
       [
         "famili",
-        3.57
+        4.121
+      ],
+      [
+        "feminazis",
+        4.062
+      ],
+      [
+        "esas",
+        3.728
+      ],
+      [
+        "put gord",
+        3.615
       ],
       [
         "delincuent",
-        3.546
+        3.483
       ],
       [
-        "rien",
-        3.52
+        "gilipoll",
+        3.48
+      ],
+      [
+        "imbecil",
+        3.232
       ],
       [
         "influencers",
-        3.439
+        3.115
       ],
       [
-        "timador",
-        3.404
+        "tod",
+        3.069
       ]
     ],
     "OFP": [
       [
         "gord",
-        4.549
+        5.339
       ],
       [
         "hipocrit",
-        4.273
-      ],
-      [
-        "payas",
-        4.137
+        4.533
       ],
       [
         "eres",
-        3.99
+        4.276
+      ],
+      [
+        "payas",
+        4.254
       ],
       [
         "ridicul",
-        3.918
+        4.247
       ],
       [
         "tu",
-        3.435
-      ],
-      [
-        "fals",
-        3.411
-      ],
-      [
-        "das",
-        3.289
-      ],
-      [
-        "fea",
-        3.246
-      ],
-      [
-        "vet",
-        3.213
+        3.684
       ],
       [
         "tont",
-        3.187
+        3.336
       ],
       [
-        "sos",
-        3.038
+        "fea",
+        3.288
+      ],
+      [
+        "loc",
+        3.249
+      ],
+      [
+        "fals",
+        3.216
+      ],
+      [
+        "vet",
+        3.096
+      ],
+      [
+        "das",
+        3.062
       ]
     ]
   }

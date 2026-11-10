@@ -96,6 +96,9 @@ class TextPreprocessor(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X) -> list[str]:
+        """
+        Preprocesa cada texto y devuelve la lista de palabras finales, separadas por espacios.
+        """
         return [" ".join(item.final) for item in self._analyze(list(X))]
 
     def explain(self, text: str) -> dict:
